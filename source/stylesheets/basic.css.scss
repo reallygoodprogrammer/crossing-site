@@ -2,18 +2,21 @@
 $page-bg-color: #020202;
 $head-bg-color: #72705B;
 $bg-color: #020202;
-$accent-color: #F7567C;
+//$accent-color: #F7567C;
+$accent-color: #EAF0CE;
 $border-color: #BEFFC7;
 $txt-color: #FCEFEF;
 
 // fonts
-$main-font: "Lucida Console";
+$main-font: "Courier New", Monospace;
 
 .page {
   background-color: $page-bg-color;
+  font-family: $main-font;
 }
 
-// 'box' here refers to sections (header, body, footer)
+
+// borders for each 'box'
 .base-box {
   color: $txt-color;
   padding: 5px;
@@ -47,14 +50,13 @@ $main-font: "Lucida Console";
   font-size: 8px;
 }
 
-// css for individual navbar buttons
+// individual navbar buttons
 .navbutton { 
   width: 100%;
-  height: 1.5rem;
+  min-height: 1.25rem;
   display: flex;
   align-content: center;
   justify-content: center;
-  font: $main-font;
 }
 
 .navbutton > a {
@@ -75,8 +77,9 @@ $main-font: "Lucida Console";
   }
 }
 
+// title of navbar
 .navtitle {
-  height: 2rem;
+  height: 2.5rem;
   text-decoration: underline;
   font-size: 6px;
 }

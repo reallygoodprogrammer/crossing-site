@@ -19,7 +19,7 @@ body {
    "head head head"
    "navbar main sidebar"
    "foot foot foot";
-  grid-template-columns: 2fr 8fr 3fr;
+  grid-template-columns: 1fr 5fr;
   grid-template-rows: 2fr 8fr 1fr;
   gap: 6px;
   max-width: 1000px;
@@ -32,8 +32,9 @@ body {
 
 .navbar {
   display: flex;
+  flex-direction: column;
   grid-area: navbar;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .main {
