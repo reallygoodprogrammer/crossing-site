@@ -1,0 +1,82 @@
+// colors
+$page-bg-color: #020202;
+$head-bg-color: #72705B;
+$bg-color: #020202;
+$accent-color: #F7567C;
+$border-color: #BEFFC7;
+$txt-color: #FCEFEF;
+
+// fonts
+$main-font: "Lucida Console";
+
+.page {
+  background-color: $page-bg-color;
+}
+
+// 'box' here refers to sections (header, body, footer)
+.base-box {
+  color: $txt-color;
+  padding: 5px;
+}
+
+@mixin not-head-box-borders {
+  background-color: $bg-color;
+  border-width: 2px;
+  border-color: $border-color;
+}
+
+.box {
+  @extend .base-box;
+  @include not-head-box-borders;
+  border-style: solid dashed dashed solid;
+}
+
+.foot-box {
+  @extend .base-box;
+  @include not-head-box-borders;
+  border-style: dashed dashed solid solid;
+}
+
+.head-box {
+  @extend .base-box;  
+  background-color: $head-bg-color;
+  border-style: double;
+  border-width: 5px;
+  border-color: $border-color;
+  text-align: center;
+  font-size: 8px;
+}
+
+// css for individual navbar buttons
+.navbutton { 
+  width: 100%;
+  height: 1.5rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font: $main-font;
+}
+
+.navbutton > a {
+  color: $border-color;
+  width: 90%;
+  height: 100%;
+  text-align: center;
+  text-decoration: none;
+  border-style: none;
+  transition: color 0.2s ease;
+  transition: border-color 0.2s ease;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0);
+  &:hover {
+    color: $txt-color;
+    border-color: $accent-color;
+  }
+}
+
+.navtitle {
+  height: 2rem;
+  text-decoration: underline;
+  font-size: 6px;
+}

@@ -5,12 +5,34 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Use the title from a page's frontmatter if it has one -->
-    <title><%= current_page.data.title || "sap loves u" %></title>
+    <title><%= current_page.data.title || "saploves u" %></title>
     <%= stylesheet_link_tag "site" %>
+    <%= yield_content :stylesheet %>
     <%= javascript_include_tag "site" %>
   </head>
-  <body>
-    <%= yield %>
+  <body id="centered" class="page">
+
+    <div class="main_container">
+      <header class="head head-box">
+        <%= yield_content :header %>
+      </header>
+
+      <div class="navbar box">
+        <%= yield_content :navbar %>
+      </div>
+
+      <div class="main box">
+        <%= yield %>
+      </div>
+
+      <div class="sidebar box">
+        <%= yield_content :sidebar %>
+      </div>
+
+      <footer class="foot foot-box">
+        <%= yield_content :footer %>
+      </footer>
+    </div>
+
   </body>
 </html>

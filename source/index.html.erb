@@ -1,9 +1,19 @@
 ---
-title: Welcome to Middleman
+title: saploves u
 ---
 
-<h1>
-  i hi u
-</h1>
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "basic" %>
+<% end %>
 
-<%= link_to("Read Documentation", "https://middlemanapp.com/basics/templating_language/", target: "_blank") %>
+<%= partial "partials/header" %>
+<%= partial "partials/navbar" %>
+<%= partial "partials/sidebar" %>
+<%= partial "partials/footer" %>
+
+<div>
+  <h1>
+    i hi u
+  </h1>
+  <p>hello and goodbye cause john cena</p>
+</div>

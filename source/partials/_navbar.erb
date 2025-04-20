@@ -1,0 +1,17 @@
+<% content_for :navbar do %>
+  <div>
+    <pre class="navtitle">        ▓▓▓\\ ▓▒▒▒▒▒   ▓▓▓▓▓▓_  ▓▓▓▓▓░░ ▓▓▓▓▓▓        
+       ░▓▓│░▓ ▓▒   ▒   ▓│  ___▒▒▓▓▒▒▒ │  ▓▓░          
+  ░░ ░  ▒▓▓/▒ ▓▒▒▒▒▒▒▒▒▓│ │  │  ▓░░░▒▒    ▓▓▓▓        
+       ▒▓▓│   ▓▒ ▓▒▒   ▓│▓▓▓▓│  ▓▓▓▓▓░░▓▓▓▓▓▓▓▒▒░▒▒▒  </pre>
+  <% 
+      sitemap.resources.select { 
+        |r| r.path.ends_with?(".html") && !r.path.include?("/")
+      }.each do |r| 
+  %>
+    <div class="navbutton">
+      <a href="<%= r.url %>"><%= r.path.gsub('main_pages/','').gsub('.html','') %></a>
+    </div>
+  <% end %>
+  </div>
+<% end %>
