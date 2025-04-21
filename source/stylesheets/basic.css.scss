@@ -2,7 +2,6 @@
 $page-bg-color: #020202;
 $head-bg-color: #72705B;
 $bg-color: #020202;
-//$accent-color: #F7567C;
 $accent-color: #EAF0CE;
 $border-color: #BEFFC7;
 $txt-color: #FCEFEF;
@@ -16,7 +15,9 @@ $main-font: "Courier New", Monospace;
 }
 
 
-// borders for each 'box'
+//----------------------------------------
+// Boxes (i.e. sections)
+
 .base-box {
   color: $txt-color;
   padding: 5px;
@@ -48,7 +49,16 @@ $main-font: "Courier New", Monospace;
   border-color: $border-color;
   text-align: center;
   font-size: 8px;
+  .header-data {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+  }
 }
+
+
+//----------------------------------------
+// Nav Bar
 
 // individual navbar buttons
 .navbutton { 
@@ -59,18 +69,26 @@ $main-font: "Courier New", Monospace;
   justify-content: center;
 }
 
+.navbar > div > img {
+  max-width: 100%;
+}
+
+.navbar > hr {
+  color: $border-color;
+}
+
 .navbutton > a {
   color: $border-color;
   width: 90%;
   height: 100%;
   text-align: center;
   text-decoration: none;
-  border-style: none;
-  transition: color 0.2s ease;
-  transition: border-color 0.2s ease;
+  font-size: 18px;
   border-style: dashed;
   border-width: 2px;
   border-color: rgba(0, 0, 0, 0);
+  transition: color 0.2s ease;
+  transition: border-color 0.2s ease;
   &:hover {
     color: $txt-color;
     border-color: $accent-color;
@@ -79,7 +97,80 @@ $main-font: "Courier New", Monospace;
 
 // title of navbar
 .navtitle {
-  height: 2.5rem;
+  height: 2rem;
   text-decoration: underline;
   font-size: 6px;
+}
+
+
+//----------------------------------------
+// Footer
+
+.footer_box {  
+  font-size: 14px;
+  color: $txt-color;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-areas:
+   "links-section other-section";
+  grid-template-columns: 1fr 1fr;
+  .link-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-around;
+  }
+  .other-section {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    padding: 0px;
+    justify-content: center;
+  }
+}
+
+.other-section > p {
+  margin: 0px;
+  text-align: center;
+}
+
+.other-section > p > a {
+  color: $border-color;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $txt-color;
+  }
+}
+
+.other-section > p > a {
+  color: $border-color;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $txt-color;
+  }
+}
+
+.other-section > img {
+  width: 100%;
+}
+
+.link-section > a {
+  padding: 2px;
+}
+
+
+.link-section > a > img {
+  width: 100%;
+  max-width: 200px;
+  max-height: 25px;
+  border-style: solid;
+  border-color: $bg-color;
+  border-width: 2px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  transition: border-color 0.2s ease;
+  &:hover {
+    border-color: $txt-color; 
+  }
 }

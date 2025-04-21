@@ -1,20 +1,19 @@
 <% content_for :navbar do %>
   <div>
+    <img src="images/gifs/sparkles.gif"></img>
     <pre class="navtitle">        ▓▓▓\\ ▓▒▒▒▒▒   ▓▓▓▓▓▓_  ▓▓▓▓▓░░ ▓▓▓▓▓▓        
        ░▓▓│░▓ ▓▒   ▒   ▓│  ___▒▒▓▓▒▒▒ │  ▓▓░          
   ░░ ░  ▒▓▓/▒ ▓▒▒▒▒▒▒▒▒▓│ │  │  ▓░░░▒▒    ▓▓▓▓        
        ▒▓▓│   ▓▒ ▓▒▒   ▓│▓▓▓▓│  ▓▓▓▓▓░░▓▓▓▓▓▓▓▒▒░▒▒▒  </pre>
-  <% 
-      sitemap.resources.select { 
-        |r| r.path.ends_with?(".html") && !r.path.include?("/")
-      }.each do |r| 
-  %>
+    <img src="images/gifs/sparkles.gif"></img>
+    <% 
+        sitemap.resources.select { 
+          |r| r.path.ends_with?(".html") && !r.path.include?("/")
+        }.each do |r| 
+    %>
     <div class="navbutton">
       <a href="<%= r.url %>"><%= r.path.gsub('main_pages/','').gsub('.html','') %></a>
     </div>
   <% end %>
-  </div>
-  <div>
-    <iframe src="https://www3.cbox.ws/box/?boxid=3545833&boxtag=aE7jk6" width="100%" height="450" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
   </div>
 <% end %>

@@ -17,13 +17,12 @@ body {
   display: grid;
   grid-template-areas:
    "head head head"
-   "navbar main sidebar"
-   "foot foot foot";
+   "navbar main main"
+   "navbar foot foot";
   grid-template-columns: 1fr 5fr;
   grid-template-rows: 2fr 8fr 1fr;
   gap: 6px;
-  max-width: 1000px;
-  min-height: 90vh;
+  max-width: 900px;
 }
 
 .head {
