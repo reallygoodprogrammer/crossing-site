@@ -4,15 +4,24 @@ title: saploves u
 
 <% content_for :stylesheet do %>
   <%= stylesheet_link_tag "basic" %>
+  <%= stylesheet_link_tag "index" %>
 <% end %>
 
 <%= partial "partials/header" %>
 <%= partial "partials/navbar" %>
 <%= partial "partials/footer" %>
 
-<div>
-  <h1>
-    i hi u
-  </h1>
-  <p>hello and goodbye cause john cena</p>
+<div class="ind-body">
+  <div class="ind-beg">
+    <h1>
+      i hi u
+    </h1>
+    <p>hello and goodbye cause john cena</p>
+  </div>
+  <div class="ind-inner">
+    <p>there's something here</p>
+  </div>
+  <div class="ind-inner">
+    <iframe src="https://saplove.atabook.org/" description="atabook" height="400px"></iframe>
+  </div>
 </div>

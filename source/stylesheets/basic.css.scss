@@ -77,17 +77,12 @@ $main-font: "Courier New", Monospace;
   max-width: 100%;
 }
 
-.navbar > hr {
-  color: $border-color;
-}
-
 .navbutton > a {
   color: $border-color;
   width: 90%;
   height: 100%;
-  text-align: center;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 14px;
   border-style: dashed;
   border-width: 2px;
   border-color: rgba(0, 0, 0, 0);
@@ -101,9 +96,8 @@ $main-font: "Courier New", Monospace;
 
 // title of navbar
 .navtitle {
-  height: 2rem;
   text-decoration: underline;
-  font-size: 6px;
+  font-size: 5px;
 }
 
 
@@ -123,7 +117,7 @@ $main-font: "Courier New", Monospace;
     display: flex;
     flex-wrap: wrap;
     align-content: center;
-    justify-content: space-around;
+    justify-content: center;
   }
   .other-section {
     display: flex;

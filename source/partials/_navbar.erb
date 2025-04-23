@@ -11,9 +11,9 @@
           |r| r.path.ends_with?(".html") && !r.path.include?("/")
         }.each do |r| 
     %>
-    <div class="navbutton">
-      <a href="<%= r.url %>"><%= r.path.gsub('main_pages/','').gsub('.html','') %></a>
-    </div>
-  <% end %>
+      <div class="navbutton">
+        <a href="<%= r.url %>">/<%= r.path.gsub('index','home').gsub('.html','') %> page</a>
+      </div>
+    <% end %>
   </div>
 <% end %>
