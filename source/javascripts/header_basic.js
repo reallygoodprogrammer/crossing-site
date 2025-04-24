@@ -51,7 +51,7 @@ function inCanvas() {
 
 function mouseClicked() {
 	if (!inCanvas()) {
-		return false;
+		return;
 	}
 	console.log("clicked");
 	for (let x = 0; x < cols; x++) {
