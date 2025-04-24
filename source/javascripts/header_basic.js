@@ -21,10 +21,10 @@ function setup() {
 	acc_c = color('#BEFFC7');
 	blk_c = color('#020202');
 
-	rows = rawText.length;
+	rows = rawText.length - 1;
 	cols = rawText[0].length;
 	wres = width / cols;
-	hres = height / rows;
+	hres = height / (rows + 1);
 
 	frameCount = 0;
 
@@ -33,8 +33,10 @@ function setup() {
 }
 
 function windowResized() {
-  const hd = document.getElementById('header-data');
-  resizeCanvas(hd.offsetWidth, hd.offsetHeight);
+	const hd = document.getElementById('header-data');
+	resizeCanvas(hd.offsetWidth, hd.offsetHeight);
+	wres = width / cols;
+	hres = height / (rows + 1);
 }
 
 function inCanvas() {
@@ -62,13 +64,21 @@ function mouseClicked() {
 			}
 		}
 	}
-	frameCount = 0;
+	frameCount = ceil(frameCountMax / 2);
+}
+
+function notAlphaNum(c) {
+	if (c == 'O' || c == 'X') {
+		return true;
+	}
+	return !(/^[a-z0-9]$/i.test(c));
 }
 
 function draw() {
 	background(bg_c);
 	textSize(10);
 	textFont('Courier New');
+	textStyle(BOLD);
 
 	if (frameCount > frameCountMax) {
 		updateSparkles();
@@ -108,12 +118,14 @@ function draw() {
 function updateSparkles() {
 	for (let x = 0; x < cols; x++) {
 		for (let y = 0; y < rows; y++) {
-			if (currentData[y][x] == 'O') {
-				currentData[y][x] = 'X';
-			} else if (random(0,1) < 0.03) {
-				currentData[y][x] = '▓';
-			} else {
-				currentData[y][x] = baseData[y][x];
+			if (notAlphaNum(currentData[y][x])) {
+				if (currentData[y][x] == 'O') {
+					currentData[y][x] = 'X';
+				} else if (random(0,1) < 0.03) {
+					currentData[y][x] = '▓';
+				} else {
+					currentData[y][x] = baseData[y][x];
+				}
 			}
 		}
 	}

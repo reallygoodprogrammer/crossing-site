@@ -49,11 +49,12 @@ $main-font: "Courier New", Monospace;
   border-color: $border-color;
   display: flex;
   justify-content: center;
+  padding: 0px;
   #header-data {
     //display: flex;
     //justify-content: space-around;
     //align-content: center;
-    width: 100%;
+    width: 95%;
     height: 100%;
   }
 }
