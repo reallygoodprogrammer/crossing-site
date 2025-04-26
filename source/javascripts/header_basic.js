@@ -5,6 +5,7 @@ const header_sketch = (p) => {
 			this.frames = frames;
 			this.frameWidth = frames[0][0].length;
 			this.frameHeight = frames[0].length;
+			this.ratio = 2;
 
 			// for counting states
 			this.step = 0;
@@ -12,13 +13,13 @@ const header_sketch = (p) => {
 			this.walkLimit = 4;
 
 			// for calculating distances
-			this.maxWidth = cols * 2.5;
-			this.wRes = wres / 2.5;
-			this.hRes = hres / 2.5;
+			this.maxWidth = cols * this.ratio;
+			this.wRes = wres / this.ratio;
+			this.hRes = hres / this.ratio;
 			this.jumpCol = p.color('#E38C9B');
 			this.col = p.color('#5DFDCB');
 			this.x = -this.frameWidth;
-			this.y = (this.frameHeight * 2.5);
+			this.y = (this.frameHeight * this.ratio) - 3;
 
 			// for counting frames
 			this.counter = 0;
@@ -38,7 +39,6 @@ const header_sketch = (p) => {
 				if (this.jumpCount > this.jumpMax) {
 					this.jumpCount = 0;
 					this.jump = false;
-					this.y = (this.frameHeight * 2.5);
 					this.step = 0;
 					this.sitCounter = 0;
 				}
