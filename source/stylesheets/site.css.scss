@@ -1,0 +1,51 @@
+// css that applies to whole site
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
+    "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
+    "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
+    "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
+  padding: 1rem 1rem;
+}
+
+#centered {
+  display: flex;
+  justify-content: center;
+}
+
+.main_container {
+  display: grid;
+  grid-template-areas:
+   "head head head"
+   "navbar main main"
+   "foot foot foot";
+  grid-template-columns: 1fr 6fr;
+  gap: 6px;
+  max-width: 950px;
+}
+
+.head {
+  grid-area: head; 
+  height: 120px;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  grid-area: navbar;
+  justify-content: space-between;
+}
+
+.main {
+  grid-area: main;
+  min-height: 800px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.foot {
+  grid-area: foot;
+  height: 60px;
+}

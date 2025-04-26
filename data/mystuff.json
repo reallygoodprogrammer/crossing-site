@@ -1,0 +1,12 @@
+{
+	"links" : {
+		"github": {
+			"link": "https://github.com/reallygoodprogrammer",
+			"image": "images/gifs/github.gif"
+		},
+		"spotify": {
+			"link": "https://open.spotify.com/user/milesdustin..",
+			"image": "images/gifs/spotify.gif"
+		}
+	}
+}

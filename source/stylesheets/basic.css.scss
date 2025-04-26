@@ -1,0 +1,197 @@
+// colors
+$page-bg-color: #020202;
+$head-bg-color: #020202;
+$bg-color: #020202;
+$accent-color: #EAF0CE;
+$border-color: #BEFFC7;
+$txt-color: #FCEFEF;
+
+// fonts
+$main-font: "Courier New", Monospace;
+
+.page {
+  background-color: $page-bg-color;
+  font-family: $main-font;
+}
+
+
+//----------------------------------------
+// Boxes (i.e. sections)
+
+.base-box {
+  color: $txt-color;
+  padding: 5px;
+}
+
+@mixin not-head-box-borders {
+  background-color: $bg-color;
+  border-width: 2px;
+  border-color: $border-color;
+}
+
+.box {
+  @extend .base-box;
+  @include not-head-box-borders;
+  border-style: solid dashed dashed solid;
+}
+
+.foot-box {
+  @extend .base-box;
+  @include not-head-box-borders;
+  border-style: dashed dashed solid solid;
+}
+
+.head-box {
+  @extend .base-box;  
+  background-color: $head-bg-color;
+  border-style: double;
+  border-width: 5px;
+  border-color: $border-color;
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+  #header-data {
+    //display: flex;
+    //justify-content: space-around;
+    //align-content: center;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+//.header-data > img {
+//  height: 150px;
+//}
+
+
+//----------------------------------------
+// Nav Bar
+
+#navsketch {
+  width: 260px;
+  height: 70%;
+  position: absolute;
+  z-index: 0;
+  padding: 0px 0px 5px 0px;
+}
+
+#tippytop {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#navbuttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: center;
+}
+
+// individual navbar buttons
+.navbutton { 
+  min-width: 50%;
+  min-height: 1.25rem;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.navbutton > a {
+  color: $border-color;
+  width: 90%;
+  height: 100%;
+  text-decoration: none;
+  font-size: 16px;
+  border-style: dashed;
+  border-width: 2px;
+  border-color: rgba(0, 0, 0, 0);
+  transition: color 0.2s ease;
+  transition: border-color 0.2s ease;
+  &:hover {
+    color: $txt-color;
+    border-color: $accent-color;
+  }
+}
+
+.navbar > iframe {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+//----------------------------------------
+// Footer
+
+.footer_box {  
+  font-size: 13px;
+  color: $txt-color;
+  display: grid;
+  grid-template-areas:
+   "links-section"
+   "other-section";
+  grid-template-rows: 1fr 1fr;
+  .link-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: bottom;
+  }
+  .other-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: top;
+  }
+}
+
+.other-section > p {
+  margin: 0px;
+  text-align: center;
+}
+
+.other-section > p > a {
+  color: $border-color;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $txt-color;
+  }
+}
+
+.other-section > p > a {
+  color: $border-color;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $txt-color;
+  }
+}
+
+.other-section > img {
+  width: 100%;
+}
+
+.link-section > a {
+  padding: 2px;
+}
+
+
+.link-section > a > img {
+  width: 100%;
+  max-width: 200px;
+  max-height: 25px;
+  border-style: solid;
+  border-color: $bg-color;
+  border-width: 2px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  transition: border-color 0.2s ease;
+  &:hover {
+    border-color: $txt-color; 
+  }
+}

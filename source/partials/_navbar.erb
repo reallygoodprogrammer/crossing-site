@@ -1,0 +1,22 @@
+<% content_for :navbar do %>
+  <div id="navsketch"></div>
+  <div id="tippytop">
+    <div id="pages">
+      <h3 style="text-align:center;">pages</h3>
+      <div id="navbuttons">
+        <% 
+            sitemap.resources.select { 
+              |r| r.path.ends_with?(".html") && !r.path.include?("/")
+            }.each do |r| 
+        %>
+          <div class="navbutton">
+            <a href="<%= r.url %>">/<%= r.path.gsub('index','home').gsub('.html','') %></a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <div id="atabook">
+     <iframe src="https://saplove.atabook.org/" description="atabook" height="400px" width="250px"></iframe>
+  </div>
+  </div>
+<% end %>
