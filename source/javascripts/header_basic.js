@@ -1,15 +1,78 @@
 const header_sketch = (p) => {
-	let bg_c, txt_c, acc_c, blk_c;
+	let catMovement = 10;
+	class Cat {
+		constructor(frames, rows, cols, wres, hres) {
+			this.frames = frames;
+			this.frameWidth = frames[0][0].length;
+			this.frameHeight = frames[0].length;
+
+			this.step = 0;
+			this.maxStep = frames.length;
+			this.maxWidth = cols * 2;
+			this.wRes = wres / 2;
+			this.hRes = hres / 2;
+			this.col = p.color('#E38C9B');
+
+			this.x = -this.frameWidth;
+			this.y = (this.frameHeight * 2);
+
+			this.counter = 0;
+			this.rate = 10;
+		}
+
+		update() {
+			if (this.counter >= this.rate) {
+				this.step += 1;
+				if (this.step == this.frames.length) {
+					this.step = 0;
+				}
+				this.x += catMovement;
+				if (this.x > this.maxWidth) {
+					this.x = -this.frameWidth;
+				}
+				this.counter = 0;
+			} else {
+				this.counter += 1;
+			}
+		}
+
+		display() {
+			p.text
+			p.fill(this.col);
+			for (let i = 0; i < this.frameWidth; i++) {
+				for (let j = 0; j < this.frameHeight; j++) {
+					let xloc = (this.x + i) * this.wRes;
+					let yloc = (this.y + j) * this.hRes;
+					p.text(
+						this.frames[this.step][j][i],
+						xloc, yloc
+					);
+				}
+			}
+		}
+	}
+
+	let bg_c, txt_c, acc_c, blk_c, shd_c;
 	let rows, cols, wres, hres;
 
 	let rawText;
 	let baseData, currentData;
 
 	let frameCount;
-	let frameCountMax = 15;
+	let frameCountMax = 25;
+
+	let xcol, ycol;
+	let colChange = 0.01;
+	let colDist = 0.1;
+
+	let cat;
 
 	p.preload = () => {
 		rawText = p.loadStrings('/files/header_ascii.txt');
+		catFrameOne = p.loadStrings('/files/cat_ascii_one.txt');
+		catFrameTwo = p.loadStrings('/files/cat_ascii_two.txt');
+		catFrameThree = p.loadStrings('/files/cat_ascii_three.txt');
+		catFrameFour = p.loadStrings('/files/cat_ascii_four.txt');
 	};
 
 	p.setup = () => {
@@ -17,9 +80,11 @@ const header_sketch = (p) => {
 		p.createCanvas(hd.offsetWidth, hd.offsetHeight);
 
 		blk_c = p.color('#72705B');
-		txt_c = p.color('#FCEFEF');
+		txt_c = p.color('#FFFFFF');
+		shd_c = p.color('#000000');
 		acc_c = p.color('#BEFFC7');
 		bg_c = p.color('#020202');
+		bg_c.setAlpha(64);
 
 		rows = rawText.length - 1;
 		cols = rawText[0].length;
@@ -30,6 +95,14 @@ const header_sketch = (p) => {
 
 		baseData = rawText.map(r => r.split(''));
 		currentData = baseData.map(r => [...r]);
+
+		cat = new Cat(
+			[catFrameOne, catFrameTwo, catFrameThree, catFrameFour], 
+			rows, cols, wres, hres
+		);
+
+		xcol = p.random(0,10000);
+		ycol = p.random(0,10000);
 	};
 
 	p.windowResized = () => {
@@ -57,7 +130,7 @@ const header_sketch = (p) => {
 			for (let y = 0; y < rows; y++) {
 				let r = p.random(0,1);
 				if (r < 0.25) {
-					currentData[y][x] = '*';
+					currentData[y][x] = '-';
 				} else if (r < 0.5) {
 					currentData[y][x] = '.';
 				}
@@ -67,14 +140,17 @@ const header_sketch = (p) => {
 	};
 
 	p.notAlphaNum = (c) => {
-		if (c == '.' || c == '*') {
+		if (c == '.' || c == '-') {
 			return true;
 		}
 		return !(/^[a-z0-9]$/i.test(c));
 	};
 
 	p.draw = () => {
-		p.background(bg_c);
+		p.fill(bg_c);
+		p.noStroke();
+		p.rect(0,0,p.width,p.height);
+
 		p.textSize(8);
 		p.textFont('Courier New');
 		p.textStyle(p.BOLD);
@@ -87,41 +163,48 @@ const header_sketch = (p) => {
 		if (p.inCanvas()) {
 			let x = p.floor((p.mouseX / p.width) * cols);
 			let y = p.floor((p.mouseY / p.height) * rows);
-			currentData[y][x] = '.';
+			currentData[y][x] = '-';
 			if (x < cols - 1) {
-				currentData[y][x+1] = '.';
+				currentData[y][x+1] = '-';
 				if (y < rows - 1) {
-					currentData[y+1][x+1] = '.';
-					currentData[y+1][x] = '.';
+					currentData[y+1][x+1] = '-';
+					currentData[y+1][x] = '-';
 				}
 			} else if (y < rows - 1) {
-				currentData[y+1][x] = '.';
+				currentData[y+1][x] = '-';
 			}
 		}
 
 		for (let x = 0; x < cols; x++) {
 			for (let y = 0; y < rows; y++) {
-				if (currentData[y][x] == '.' && p.random(0,1) > 0.5) {
-					p.fill(acc_c);
-				} else if (currentData[y][x] == '*') {
-					p.fill(blk_c);
+				if ((currentData[y][x] == '.' || currentData[y][x] == '-') && p.random(0,1) > 0.5) {
+						p.fill(acc_c);
 				} else {
-					p.fill(txt_c);
+					let mColor = p.mappedColor(
+						xcol + (x * colDist), 
+						ycol + (y * colDist), 
+						txt_c, shd_c
+					);
+					p.fill(mColor);
 				}
-				p.text(currentData[y][x], wres * x, (12 + hres * y));
+				p.text(currentData[y][x], (wres * x), (12 + hres * y));
 				p.fill(blk_c);
 				p.text(currentData[y][x], (wres * x), ((12 + hres * y) - 5));
 			}
 		}
+		cat.update();
+		cat.display();
 		frameCount++;
+		xcol += colChange;
+		ycol += colChange;
 	};
 
 	p.updateSparkles = () => {
 		for (let x = 0; x < cols; x++) {
 			for (let y = 0; y < rows; y++) {
 				if (p.notAlphaNum(currentData[y][x])) {
-					if (currentData[y][x] == '.') {
-						currentData[y][x] = '*';
+					if (currentData[y][x] == '-') {
+						currentData[y][x] = '.';
 					} else if (p.random(0,1) < 0.03) {
 						currentData[y][x] = '▓';
 					} else {
@@ -130,6 +213,16 @@ const header_sketch = (p) => {
 				}
 			}
 		}
+	};
+
+	p.mappedColor = (x, y, front, back) => {
+		//let m = p.sqrt(p.noise(x,y));
+		let m = p.noise(x, y);
+		return p.color(
+			p.map(m, 0, 1, p.red(back), p.red(front)),
+			p.map(m, 0, 1, p.green(back), p.green(front)),
+			p.map(m, 0, 1, p.blue(back), p.blue(front))
+		);
 	};
 };
 
