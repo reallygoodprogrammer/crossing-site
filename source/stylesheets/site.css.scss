@@ -21,12 +21,12 @@ body {
    "foot foot foot";
   grid-template-columns: 1fr 6fr;
   gap: 6px;
-  max-width: 900px;
+  max-width: 950px;
 }
 
 .head {
   grid-area: head; 
-  height: 150px;
+  height: 120px;
 }
 
 .navbar {
