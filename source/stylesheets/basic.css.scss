@@ -72,6 +72,7 @@ $main-font: "Courier New", Monospace;
   height: 100%;
   position: absolute;
   z-index: 0;
+  padding: 0px 0px 5px 0px;
 }
 
 #tippytop {
@@ -130,23 +131,22 @@ $main-font: "Courier New", Monospace;
 // Footer
 
 .footer_box {  
-  font-size: 14px;
+  font-size: 13px;
   color: $txt-color;
   display: grid;
   grid-template-areas:
-   "links-section other-section";
-  grid-template-columns: 1fr 1fr;
+   "links-section"
+   "other-section";
+  grid-template-rows: 1fr 1fr;
   .link-section {
     display: flex;
     flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
+    align-content: bottom;
   }
   .other-section {
     display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-content: top;
   }
 }
 
@@ -157,6 +157,7 @@ $main-font: "Courier New", Monospace;
 
 .other-section > p > a {
   color: $border-color;
+  text-decoration: none;
   transition: color 0.2s ease;
   &:hover {
     color: $txt-color;
