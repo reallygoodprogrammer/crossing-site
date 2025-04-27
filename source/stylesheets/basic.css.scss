@@ -29,6 +29,7 @@ ul {
 a {
   transition: color 0.2s ease;
   color: $border-color;
+  text-decoration: none;
   &:hover {
     color: $txt-color;
   }
