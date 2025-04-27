@@ -1,10 +1,11 @@
 const header_sketch = (p) => {
-	let catMovement = 14;
+	let catMovement = 16;
 	class Cat {
 		constructor(frames, rows, cols, wres, hres) {
 			this.frames = frames;
 			this.frameWidth = frames[0][0].length;
 			this.frameHeight = frames[0].length;
+			this.ratio = 2.0;
 
 			// for counting states
 			this.step = 0;
@@ -12,17 +13,17 @@ const header_sketch = (p) => {
 			this.walkLimit = 4;
 
 			// for calculating distances
-			this.maxWidth = cols * 2.5;
-			this.wRes = wres / 2.5;
-			this.hRes = hres / 2.5;
+			this.maxWidth = cols * this.ratio;
+			this.wRes = wres / this.ratio;
+			this.hRes = hres / this.ratio;
 			this.jumpCol = p.color('#E38C9B');
 			this.col = p.color('#5DFDCB');
 			this.x = -this.frameWidth;
-			this.y = (this.frameHeight * 2.5);
+			this.y = (this.frameHeight * this.ratio) - 3;
 
 			// for counting frames
 			this.counter = 0;
-			this.rate = 10;
+			this.rate = 6;
 
 			// for counting jump frame
 			this.jump = false;
@@ -38,7 +39,6 @@ const header_sketch = (p) => {
 				if (this.jumpCount > this.jumpMax) {
 					this.jumpCount = 0;
 					this.jump = false;
-					this.y = (this.frameHeight * 2.5);
 					this.step = 0;
 					this.sitCounter = 0;
 				}
@@ -46,7 +46,7 @@ const header_sketch = (p) => {
 				this.step += 1;
 				if (this.sitCounter >= this.walkLimit) {
 					this.step = 3;
-					this.sitCounter = - 25;
+					this.sitCounter = - 50;
 					this.x += catMovement;
 				} else if (this.step >= 3) {
 					if (this.sitCounter >= 0) {
@@ -95,7 +95,7 @@ const header_sketch = (p) => {
 	let baseData, currentData;
 
 	let frameCount;
-	let frameCountMax = 25;
+	let frameCountMax = 35;
 
 	let xcol, ycol;
 	let colChange = 0.01;
@@ -187,11 +187,6 @@ const header_sketch = (p) => {
 	};
 
 	p.draw = () => {
-		/*
-		p.fill(bg_c);
-		p.noStroke();
-		p.rect(0,0,p.width,p.height);
-		*/
 		p.background(bg_c);
 
 		p.textSize(8);

@@ -1,0 +1,20 @@
+---
+title: /links
+---
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "basic" %>
+<% end %>
+
+<% content_for :javascript do %>
+  <%= javascript_include_tag "header_basic" %>
+  <%= javascript_include_tag "navbar_sketch" %>
+<% end %>
+
+<%= partial "partials/header" %>
+<%= partial "partials/navbar" %>
+<%= partial "partials/footer" %>
+
+<div class="md-body">
+  <%= md_link "links" %>
+</div>

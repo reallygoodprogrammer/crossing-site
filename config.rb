@@ -46,3 +46,18 @@ page '/*.txt', layout: false
 # end
 
 activate :livereload
+
+# markdown helper
+
+set :markdown_engine, :kramdown
+set :markdown,
+  input: 'GFM',
+  hard_wrap: false,
+  smart_quotes: ["lsquo", "rsquo", "ldquo", "rdquo"]
+
+helpers do
+  def md_link(path)
+    page = File.read("source/markdown/_#{path}.md")
+    Kramdown::Document.new(page).to_html
+  end
+end

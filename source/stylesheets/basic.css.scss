@@ -14,6 +14,26 @@ $main-font: "Courier New", Monospace;
   font-family: $main-font;
 }
 
+.md-body {
+  padding: 5px 15px 5px 15px;
+}
+
+p {
+  font-size: 14px;
+}
+
+ul {
+  font-size: 14px;
+}
+
+a {
+  transition: color 0.2s ease;
+  color: $border-color;
+  text-decoration: none;
+  &:hover {
+    color: $txt-color;
+  }
+}
 
 //----------------------------------------
 // Boxes (i.e. sections)
@@ -81,15 +101,20 @@ $main-font: "Courier New", Monospace;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-content: center;
   height: 100%;
 }
 
 #navbuttons {
   display: flex;
   flex-direction: row;
+  background-color: $bg-color;
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: center;
+  padding: 2px;
+  border-style: dashed;
+  border-color: $border-color;
 }
 
 // individual navbar buttons
