@@ -156,6 +156,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  kramdown
   middleman (~> 4.5)
   middleman-autoprefixer (~> 3.0)
   middleman-livereload
