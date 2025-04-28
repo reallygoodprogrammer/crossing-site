@@ -146,17 +146,10 @@ a {
 #atabook {
   position: relative;
   z-index: 1;
-//  overflow: hidden;
-  height: 450px;
-  width: 250px;
 }
 
 #atabook > iframe {
-  transform: scale(0.8);
-  transform-origin: 0 0;
   overflow: hidden;
-  width: 123%;
-  height: 123%;
 }
 
 
