@@ -75,6 +75,7 @@ a {
     //justify-content: space-around;
     //align-content: center;
     width: 100%;
+    max-width: 950px;
     height: 100%;
   }
 }
@@ -86,14 +87,6 @@ a {
 
 //----------------------------------------
 // Nav Bar
-
-#navsketch {
-  width: 250px;
-  height: 100%;
-  position: absolute;
-  z-index: 0;
-  padding: 0px 0px 10px 0px;
-}
 
 #tippytop {
   position: relative;

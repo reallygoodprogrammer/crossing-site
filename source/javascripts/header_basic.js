@@ -189,6 +189,11 @@ const header_sketch = (p) => {
 	p.draw = () => {
 		p.background(bg_c);
 
+		p.stroke(blk_c);
+		p.line(0,0,0,p.height);
+		p.line(p.width,0,p.width,p.height);
+		p.noStroke();
+
 		p.textSize(8);
 		p.textFont('Courier New');
 		p.textStyle(p.BOLD);

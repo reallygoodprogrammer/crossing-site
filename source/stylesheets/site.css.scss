@@ -19,14 +19,15 @@ body {
    "head head head"
    "navbar main main"
    "foot foot foot";
-  grid-template-columns: 1fr 6fr;
   gap: 6px;
-  max-width: 950px;
+  width: 90%;
+  min-width: 600px;
 }
 
 .head {
   grid-area: head; 
   height: 120px;
+  width: 100%;
 }
 
 .navbar {
@@ -34,18 +35,17 @@ body {
   flex-direction: column;
   grid-area: navbar;
   justify-content: space-between;
+  max-width: 260px;
 }
 
 .main {
   grid-area: main;
   min-height: 800px;
-}
-
-.sidebar {
-  grid-area: sidebar;
+  width: 100%;
 }
 
 .foot {
   grid-area: foot;
   height: 60px;
+  width: 100%;
 }
