@@ -1,6 +1,6 @@
 // colors
 $page-bg-color: #020202;
-$head-bg-color: #020202;
+$button-bg-color: #72705B;
 $bg-color: #020202;
 $accent-color: #EAF0CE;
 $border-color: #BEFFC7;
@@ -63,7 +63,7 @@ a {
 
 .head-box {
   @extend .base-box;  
-  background-color: $head-bg-color;
+  background-color: $bg-color;
   border-style: double;
   border-width: 5px;
   border-color: $border-color;
@@ -80,10 +80,6 @@ a {
   }
 }
 
-//.header-data > img {
-//  height: 150px;
-//}
-
 
 //----------------------------------------
 // Nav Bar
@@ -93,9 +89,8 @@ a {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-content: center;
-  height: 100%;
+  margin-bottom: 10px;
 }
 
 #navbuttons {
@@ -105,9 +100,13 @@ a {
   flex-wrap: wrap;
   justify-content: space-around;
   align-content: center;
-  padding: 2px;
-  border-style: dashed;
+  padding: 10px;
+  border-style: solid;
   border-color: $border-color;
+}
+
+#pages > h3 {
+  margin: 5px 0px 5px 0px;
 }
 
 // individual navbar buttons
@@ -121,17 +120,20 @@ a {
 
 .navbutton > a {
   color: $border-color;
+  background-color: $bg-color;
   width: 90%;
   height: 100%;
   text-decoration: none;
   font-size: 16px;
-  border-style: dashed;
-  border-width: 2px;
+  border-style: solid;
   border-color: rgba(0, 0, 0, 0);
+  border-size: 1px;
   transition: color 0.2s ease;
+  transition: background-color 0.2s ease;
   transition: border-color 0.2s ease;
   &:hover {
     color: $txt-color;
+    background-color: $button-bg-color;
     border-color: $accent-color;
   }
 }
@@ -145,6 +147,12 @@ a {
   overflow: hidden;
 }
 
+#navbar-links {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
 
 
 //----------------------------------------
@@ -155,18 +163,19 @@ a {
   color: $txt-color;
   display: grid;
   grid-template-areas:
-   "links-section"
-   "other-section";
+   "links-section other-section";
   grid-template-rows: 1fr 1fr;
   .link-section {
     display: flex;
     flex-wrap: wrap;
-    align-content: bottom;
+    justify-content: center;
+    align-content: center;
   }
   .other-section {
     display: flex;
     flex-wrap: wrap;
-    align-content: top;
+    justify-content: center;
+    align-content: center;
   }
 }
 
@@ -214,4 +223,10 @@ a {
   &:hover {
     border-color: $txt-color; 
   }
+}
+
+#wcb {
+  transform: scale(0.8);
+  transform-origin: 0 0;
+  width: 123%;
 }

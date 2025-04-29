@@ -1,20 +1,11 @@
 <% content_for :footer do %>
   <div class="footer_box">
     <div class="link-section">
-      <a href="<%= data.mystuff.links.github.link %>" target="_blank">
-        <img src="<%= data.mystuff.links.github.image %>"></img>
-      </a>
-      <!-- blinkies cafe link -->
-      <a href='https://blinkies.cafe' target='_blank'>
-        <img src='https://blinkies.cafe/b/display/blinkiesCafe-badge.gif' alt='blinkies.cafe | make your own blinkies!'>
-      </a>
-      <!-- nekoweb.org link -->
-      <a href="https://nekoweb.org/" target="_blank">
-        <img src="https://nekoweb.org/assets/buttons/button6.gif">
-      </a><!-- button by s1nez.nekoweb.org -->
-      <a href="<%= data.mystuff.links.spotify.link %>" target="_blank">
-        <img src="<%= data.mystuff.links.spotify.image %>"></img>
-      </a>
+      <% data.mystuff.links.each do |l| %>
+        <a href="<%= l.link %>" target="_blank">
+          <img src="<%= l.image %>"></img>
+        </a>
+      <% end %>
     </div>
     <div class="other-section">
       <p>
