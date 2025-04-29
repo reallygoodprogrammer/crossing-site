@@ -113,6 +113,11 @@ const header_sketch = (p) => {
 	};
 
 	p.setup = () => {
+		if (window.innerWidth <= 600) {
+			p.remove();
+			return;
+		}
+
 		const hd = document.getElementById('header-data');
 		p.createCanvas(hd.offsetWidth, hd.offsetHeight);
 
@@ -143,6 +148,11 @@ const header_sketch = (p) => {
 	};
 
 	p.windowResized = () => {
+		if (window.innerWidth <= 600) {
+			p.remove();
+			return;
+		}
+
 		const hd = document.getElementById('header-data');
 		p.resizeCanvas(hd.offsetWidth, hd.offsetHeight);
 		wres = p.width / cols;
@@ -189,10 +199,12 @@ const header_sketch = (p) => {
 	p.draw = () => {
 		p.background(bg_c);
 
+		/*
 		p.stroke(blk_c);
 		p.line(0,0,0,p.height);
 		p.line(p.width,0,p.width,p.height);
 		p.noStroke();
+		*/
 
 		p.textSize(8);
 		p.textFont('Courier New');

@@ -1,10 +1,10 @@
 // colors
 $page-bg-color: #020202;
-$button-bg-color: #72705B;
+$button-bg-color: #39372D;
 $bg-color: #020202;
 $accent-color: #EAF0CE;
-$border-color: #BEFFC7;
-$txt-color: #FCEFEF;
+$border-color: #99FF87;
+$txt-color: #F8DDDD;
 
 // fonts
 $main-font: "Courier New", Monospace;
@@ -16,6 +16,10 @@ $main-font: "Courier New", Monospace;
 
 .md-body {
   padding: 5px 15px 5px 15px;
+}
+
+.md-body > p > img {
+  width: auto;
 }
 
 p {
@@ -69,7 +73,7 @@ a {
   border-color: $border-color;
   display: flex;
   justify-content: center;
-  padding: 0px;
+  padding: 3px;
   #header-data {
     //display: flex;
     //justify-content: space-around;
@@ -77,6 +81,23 @@ a {
     width: 100%;
     max-width: 950px;
     height: 100%;
+    display: inline;
+  }
+}
+
+.head-box > pre {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .md-body > p > img {
+    width: 100%;
+  }
+
+  .head-box > pre {
+    display: inline;
+    //text-align: center;
+    width: 100%;
   }
 }
 
@@ -101,8 +122,8 @@ a {
   justify-content: space-around;
   align-content: center;
   padding: 10px;
-  border-style: solid;
-  border-color: $border-color;
+  //border-style: solid;
+  //border-color: $border-color;
 }
 
 #pages > h3 {
@@ -131,6 +152,8 @@ a {
   transition: color 0.2s ease;
   transition: background-color 0.2s ease;
   transition: border-color 0.2s ease;
+  display: flex;
+  justify-content: center;
   &:hover {
     color: $txt-color;
     background-color: $button-bg-color;
