@@ -122,8 +122,8 @@ a {
   justify-content: space-around;
   align-content: center;
   padding: 10px;
-  //border-style: solid;
-  //border-color: $border-color;
+  border-style: solid;
+  border-color: $border-color;
 }
 
 #pages > h3 {
@@ -134,9 +134,11 @@ a {
 .navbutton { 
   min-width: 50%;
   min-height: 1.25rem;
+  /*
   display: flex;
   align-content: center;
   justify-content: center;
+  */
 }
 
 .navbutton > a {
@@ -174,8 +176,13 @@ a {
   display: flex;
   justify-content: space-around;
   align-content: center;
+  flex-wrap: wrap;
 }
 
+#navbar-links > img {
+  width: auto;
+  height: auto;
+}
 
 
 //----------------------------------------
