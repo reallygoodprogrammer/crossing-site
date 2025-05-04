@@ -33,6 +33,7 @@ body {
 .navbar {
   display: flex;
   flex-direction: column;
+  justify-content:space-between;
   grid-area: navbar;
   max-width: 260px;
 }
@@ -54,9 +55,6 @@ body {
     display: none;
   }
 
-  .head {
-    display: none;
-  }
 
   .main_container {
     grid-template-areas:
