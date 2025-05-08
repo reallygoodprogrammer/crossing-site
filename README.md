@@ -11,4 +11,9 @@ This site is built using Middleman.
 
 ### license
 
+<<<<<<< HEAD
 License [can be found here](LICENSE.txt).
+=======
+In case this [somehow causes harm or legal problems](LICENSE.txt)? Feel free to copy,
+steal, send, upload this project wherever, including any non-code content.
+>>>>>>> 0e508f808b680cbc7329bd6597900a9dd724f1c9
