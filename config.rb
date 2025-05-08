@@ -57,7 +57,7 @@ set :markdown,
 
 helpers do
   def md_link(path)
-    page = File.read("source/markdown/_#{path}.md")
+    page = File.read("source/markdown/#{path}")
     Kramdown::Document.new(page).to_html
   end
 end

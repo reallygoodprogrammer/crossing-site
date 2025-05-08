@@ -1,16 +1,14 @@
-# saplove site
+# saplove crossing site code
 
-This is the middleman/p5js project I've created for my site hosted
-that you can find [here](https://saplove.nekoweb.org). I love websites.
+This is all code that I use to generate my static site where I
+post things I find on the internet. [You can find this site
+here]("https://crossing.nekoweb.org/"). Most of the things on this
+page are likely to be found using masscan and aquatone.
 
-## things to do
-
-- create links p5js sketch
-- add more to front page
+This site is built using Middleman.
 
 ---
 
 ### license
 
-In case this [somehow causes harm or legal problems](LICENSE.txt)? Feel free to copy,
-steal, send, upload this.
+License [can be found here](LICENSE.txt).

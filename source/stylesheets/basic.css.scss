@@ -1,12 +1,12 @@
 // colors
-$page-bg-color: #050401;
-$button-bg-color: #FBFBFB;
-$bg-color: #050401;
-$accent-color: #131811;
-$border-color: #5BBA6F;
-$txt-color: #FBFBFB;
+$page-bg-color: #353535;
+$button-bg-color: #453541;
+$bg-color: #353535;
+$accent-color: #453541;
+$border-color: #3C6E71;
+$txt-color: #D9D9D9;
+$link-color: #C4A29E;
 
-// fonts
 $main-font: "Courier New", Monospace;
 
 .page {
@@ -32,7 +32,7 @@ ul {
 
 a {
   transition: color 0.2s ease;
-  color: $border-color;
+  color: $link-color;
   text-decoration: none;
   &:hover {
     color: $txt-color;
@@ -67,27 +67,7 @@ a {
 
 .head-box {
   @extend .base-box;  
-  background-color: $bg-color;
-  border-style: double;
-  border-width: 5px;
-  border-color: $border-color;
-  display: flex;
-  justify-content: center;
-  #header-data {
-    //display: flex;
-    //justify-content: space-around;
-    //align-content: center;
-    width: 100%;
-    max-width: 950px;
-    height: 100%;
-    display: inline;
-  }
-}
-
-.head-box > pre {
-  display: inline;
-  //text-align: center;
-  width: 100%;
+  padding: 15px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -106,32 +86,29 @@ a {
   display: flex;
   flex-direction: column;
   align-content: center;
-  margin-bottom: 10px;
+  padding: 5px;
 }
 
 #navbuttons {
   display: flex;
   flex-direction: row;
-  background-color: $accent-color;
   flex-wrap: wrap;
-  justify-content: space-between;
   align-content: center;
-  padding: 10px;
+  justify-content: space-between;
 }
 
-// individual navbar buttons
 .navbutton { 
-  min-width: 50%;
   min-height: 1.25rem;
+  max-height: 2.2rem;
 }
 
-.navbutton > a {
-  color: $border-color;
+.navbutton > pre > a {
+  color: $link-color;
   background-color: $bg-color;
-  width: 99%;
-  height: 100%;
-  text-decoration: none;
+  //height: 100%;
   font-size: 16px;
+  text-decoration: none;
+  padding: 5px;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0);
   border-size: 5px;
@@ -140,18 +117,22 @@ a {
   transition: border-color 0.2s ease;
   display: flex;
   justify-content: center;
+  position: relative;
   &:hover {
-    color: $accent-color;
+    color: $txt-color;
     background-color: $button-bg-color;
     border-color: $border-color;
+    z-index: 2;
   }
 }
 
 #navbar-links {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-content: center;
   flex-wrap: wrap;
+  border-style: solid;
+  border-width: 2px;
 }
 
 #navbar-links > img {
@@ -166,31 +147,19 @@ a {
 .footer_box {  
   font-size: 13px;
   color: $txt-color;
-  display: grid;
-  grid-template-areas:
-   "links-section other-section";
-  grid-template-rows: 1fr 1fr;
-  .link-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-  }
-  .other-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
 }
 
-.other-section > p {
+.footer_box > p {
   margin: 0px;
   text-align: center;
 }
 
-.other-section > p > a {
-  color: $border-color;
+.footer_box > p > a {
+  color: $link-color;
   text-decoration: none;
   transition: color 0.2s ease;
   &:hover {
@@ -198,40 +167,6 @@ a {
   }
 }
 
-.other-section > p > a {
-  color: $border-color;
-  transition: color 0.2s ease;
-  &:hover {
-    color: $txt-color;
-  }
-}
-
-.other-section > img {
+.footer_box > img {
   width: 100%;
-}
-
-.link-section > a {
-  padding: 2px;
-}
-
-
-.link-section > a > img {
-  width: 100%;
-  max-width: 200px;
-  max-height: 25px;
-  border-style: solid;
-  border-color: $bg-color;
-  border-width: 2px;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  transition: border-color 0.2s ease;
-  &:hover {
-    border-color: $txt-color; 
-  }
-}
-
-#wcb {
-  transform: scale(0.8);
-  transform-origin: 0 0;
-  width: 123%;
 }
