@@ -19,9 +19,6 @@
   <div>
     <p style="width:100%;text-align:center;">--&gt; i love <a style="text-decoration:none;" href="https://nekoweb.org/">NEKOWEB!!!</a></p>
     <div id="navbar-links">
-      <% data.links.each do |l| %>
-        <%= l.a_tag %>
-      <% end %>
       <% 
           sitemap.resources.select { 
             |r| r.path.starts_with?("images/buttons/")
