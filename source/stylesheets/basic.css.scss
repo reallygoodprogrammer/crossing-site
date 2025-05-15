@@ -11,7 +11,8 @@ $main-font: "Courier New", Monospace;
 
 .page {
   background-image: url("/images/fractal.png");
-  background-position: top center; /* Position at the top center */
+  background-position: top center;
+  background-size: 20px auto;
   font-family: $main-font;
 }
 
