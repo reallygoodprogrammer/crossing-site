@@ -20,7 +20,7 @@ body {
    "navbar main"
    "foot foot";
   grid-template-columns: 1fr 4fr;
-  gap: 6px;
+  gap: 2px;
   width: 85%;
   min-width: 950px;
 }
@@ -32,7 +32,7 @@ body {
 .navbar {
   display: flex;
   flex-direction: column;
-  //justify-content: space-between;
+  justify-content: space-between;
   grid-area: navbar;
   max-width: 100%;
 }

@@ -16,8 +16,16 @@
     <br>
     <br>
   </div>
+  <div id="navbar-image-box">
+    <%
+      sitemap.resources.select {
+        |r| r.path.starts_with?("images/navbar_images/")
+        }.each do |r|
+    %>
+      <img src="<%= r.url %>"></img>
+    <% end %>
+  </div>
   <div>
-    <p style="width:100%;text-align:center;">--&gt; i love <a style="text-decoration:none;" href="https://nekoweb.org/">NEKOWEB!!!</a></p>
     <div id="navbar-links">
       <% 
           sitemap.resources.select { 

@@ -12,6 +12,10 @@ title: saplove crossing
 <%= partial "partials/navbar" %>
 <%= partial "partials/footer" %>
 
+<div class="md-body">
+  <%= md_link "_index.md" %>
+</div>
+
 <div id="index-pages-box">
   <% samples = data.pages.sample(20) %>
   <% samples.each do |p| %>
@@ -28,6 +32,3 @@ title: saplove crossing
   <% end %>
 </div>
 
-<div class="md-body">
-  <%= md_link "_index.md" %>
-</div>

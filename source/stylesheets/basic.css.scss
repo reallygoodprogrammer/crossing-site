@@ -1,16 +1,17 @@
 // colors
-$page-bg-color: #353535;
-$button-bg-color: #453541;
-$bg-color: #353535;
-$accent-color: #453541;
-$border-color: #3C6E71;
-$txt-color: #D9D9D9;
-$link-color: #C4A29E;
+$page-bg-color: #FBFBFB;
+$button-bg-color: #CBF6EA;
+$bg-color: #FBFBFB;
+$accent-color: #E2F3F3;
+$border-color: #000000;
+$txt-color: #000000;
+$link-color: #FF7477;
 
 $main-font: "Courier New", Monospace;
 
 .page {
-  background-color: $page-bg-color;
+  background-image: url("/images/fractal.png");
+  background-position: top center; /* Position at the top center */
   font-family: $main-font;
 }
 
@@ -68,6 +69,9 @@ a {
 .head-box {
   @extend .base-box;  
   padding: 15px;
+  background-color: $page-bg-color;
+  border-style: solid;
+  border-color: $border-color;
 }
 
 @media only screen and (max-width: 600px) {
@@ -127,6 +131,7 @@ a {
 }
 
 #navbar-links {
+  //background-color: $txt-color;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -138,6 +143,18 @@ a {
 #navbar-links > img {
   width: auto;
   height: auto;
+}
+
+#navbar-image-box {
+  width: auto;
+  height: auto;
+  padding: 5px;
+  display:flex;
+  flex-wrap: wrap;
+}
+
+#navbar-image-box img {
+  max-width: 100%;
 }
 
 

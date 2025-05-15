@@ -4,7 +4,6 @@ HOST="ftp-usa.nekoweb.org"
 PORT="30000"
 LOCAL_BUILD_DIR=$(readlink -f "$0" | sed 's/\/move_saplove\.bash$//g')/build
 
-cd ${LOCAL_DIR}
 middleman build
 
 if [ $? -ne 0 ]; then

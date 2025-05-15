@@ -1,5 +1,5 @@
 
-current work in progress...![baby](/images/gifs/babydance.gif)
+current work in progress...
 I'm still working on scraping and setting up this website :)
 
 ---
