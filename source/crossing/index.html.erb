@@ -9,15 +9,13 @@ title: crossing
 
 
 <% content_for :header do %>
-  <div>
-    <%= md_link "crossing/_header.md" %>
-  </div>
+  <%= partial "partials/crossing/header" %>
 <% end %>
 <% content_for :navbar do %>
-  <%= partial "partials/navbar" %>
+  <%= partial "partials/crossing/navbar" %>
 <% end %>
 <% content_for :footer do %>
-  <%= partial "partials/footer" %>
+  <%= partial "partials/crossing/footer" %>
 <% end %>
 
 <div class="md-body">
@@ -27,7 +25,7 @@ title: crossing
 <div id="index-pages-box">
   <% samples = data.crossing.pages.sample(20) %>
   <% samples.each do |p| %>
-    <a class="page-box" href="pages/<%= p.href %>">
+    <a class="page-box" href="<%= p.href %>">
       <h1><%= p.title %></h1>
       <p><% p.tags.each do |tag| %><%= tag %>, <% end %></p>
       <% if p.screenshot_url != "" %>
