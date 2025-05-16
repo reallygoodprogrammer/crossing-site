@@ -20,4 +20,4 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ---
 
-![tree](images/gifs/tree.gif)
+![tree](/images/gifs/tree.gif)

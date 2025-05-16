@@ -1,0 +1,42 @@
+---
+title: crossing
+---
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "basic" %>
+  <%= stylesheet_link_tag "crossing" %>
+<% end %>
+
+
+<% content_for :header do %>
+  <div>
+    <%= md_link "crossing/_header.md" %>
+  </div>
+<% end %>
+<% content_for :navbar do %>
+  <%= partial "partials/navbar" %>
+<% end %>
+<% content_for :footer do %>
+  <%= partial "partials/footer" %>
+<% end %>
+
+<div class="md-body">
+  <%= md_link "crossing/_index.md" %>
+</div>
+
+<div id="index-pages-box">
+  <% samples = data.crossing.pages.sample(20) %>
+  <% samples.each do |p| %>
+    <a class="page-box" href="pages/<%= p.href %>">
+      <h1><%= p.title %></h1>
+      <p><% p.tags.each do |tag| %><%= tag %>, <% end %></p>
+      <% if p.screenshot_url != "" %>
+        <img src="/images/crossing/pages/<%= p.screenshot_url %>"></img>
+      <% else %>
+        <img src="/images/crossing/no_matching_page.png"></img>
+      <% end %>
+      <p>timestamp: <%= p.timestamp %></p>
+    </a>
+  <% end %>
+</div>
+

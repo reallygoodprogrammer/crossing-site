@@ -1,0 +1,24 @@
+---
+title: saplove crossing
+---
+
+<% content_for :stylesheet do %>
+  <%= stylesheet_link_tag "basic" %>
+<% end %>
+
+
+<% content_for :header do %>
+  <div>
+    <%= md_link "crossing/_header.md" %>
+  </div>
+<% end %>
+<% content_for :navbar do %>
+  <%= partial "partials/navbar" %>
+<% end %>
+<% content_for :footer do %>
+  <%= partial "partials/footer" %>
+<% end %>
+
+<div class="md-body">
+  <%= md_link "crossing/_license.md" %>
+</div>

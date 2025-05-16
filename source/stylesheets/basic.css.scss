@@ -2,17 +2,15 @@
 $page-bg-color: #FBFBFB;
 $button-bg-color: #CBF6EA;
 $bg-color: #FBFBFB;
-$accent-color: #E2F3F3;
-$border-color: #000000;
+$accent-color: #97EDD4;
+$border-color: #97EDD4;
 $txt-color: #000000;
 $link-color: #FF7477;
 
 $main-font: "Courier New", Monospace;
 
 .page {
-  background-image: url("/images/fractal.png");
-  background-position: top center;
-  background-size: 20px auto;
+  background-color: $page-bg-color;
   font-family: $main-font;
 }
 
@@ -132,13 +130,13 @@ a {
 }
 
 #navbar-links {
-  //background-color: $txt-color;
   display: flex;
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
   border-style: solid;
   border-width: 2px;
+  border-color: $border-color;
 }
 
 #navbar-links > img {

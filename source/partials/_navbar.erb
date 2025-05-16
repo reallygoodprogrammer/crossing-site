@@ -4,7 +4,7 @@
       <div id="navbuttons">
         <% 
             sitemap.resources.select { 
-              |r| r.path.ends_with?(".html") && !r.path.include?("/")
+              |r| r.path.ends_with?(".html") && r.path.starts_with?("crossing/") && !r.path.include?("/pages/")
             }.each do |r| 
         %>
           <div class="navbutton">
