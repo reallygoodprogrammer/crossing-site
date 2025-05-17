@@ -1,188 +1,74 @@
-// colors
-$page-bg-color: #FBFBFB;
-$button-bg-color: #CBF6EA;
-$bg-color: #FBFBFB;
-$accent-color: #97EDD4;
-$border-color: #97EDD4;
-$txt-color: #000000;
-$link-color: #FF7477;
+// css that applies to whole site
 
-$main-font: "Courier New", Monospace;
-
-.page {
-  background-color: $page-bg-color;
-  font-family: $main-font;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Avenir",
+    "Segoe UI", "Lucida Grande", "Helvetica Neue", "Helvetica", "Fira Sans",
+    "Roboto", "Noto", "Droid Sans", "Cantarell", "Oxygen", "Ubuntu",
+    "Franklin Gothic Medium", "Century Gothic", "Liberation Sans", sans-serif;
+  padding: 1rem 1rem;
 }
 
-.md-body {
-  padding: 5px 15px 5px 15px;
+#centered {
+  display: flex;
+  justify-content: center;
 }
 
-.md-body > p > img {
-  width: auto;
+.main_container {
+  display: grid;
+  grid-template-areas:
+   "head head"
+   "navbar main"
+   "foot foot";
+  grid-template-columns: 1fr 4fr;
+  gap: 2px;
+  width: 85%;
+  min-width: 950px;
 }
 
-p {
-  font-size: 14px;
+.head {
+  grid-area: head; 
 }
 
-ul {
-  font-size: 14px;
-}
-
-a {
-  transition: color 0.2s ease;
-  color: $link-color;
-  text-decoration: none;
-  &:hover {
-    color: $txt-color;
-  }
-}
-
-//----------------------------------------
-// Boxes (i.e. sections)
-
-.base-box {
-  color: $txt-color;
-  padding: 5px;
-}
-
-@mixin not-head-box-borders {
-  background-color: $bg-color;
-  border-width: 2px;
-  border-color: $border-color;
-}
-
-.box {
-  @extend .base-box;
-  @include not-head-box-borders;
-  border-style: solid dashed dashed solid;
-}
-
-.foot-box {
-  @extend .base-box;
-  @include not-head-box-borders;
-  border-style: dashed dashed solid solid;
-}
-
-.head-box {
-  @extend .base-box;  
-  padding: 15px;
-  background-color: $page-bg-color;
-  border-style: solid;
-  border-color: $border-color;
-}
-
-@media only screen and (max-width: 600px) {
-  .md-body > p > img {
-    width: 100%;
-  }
-}
-
-
-//----------------------------------------
-// Nav Bar
-
-#tippytop {
-  position: relative;
-  z-index: 1;
+.navbar {
   display: flex;
   flex-direction: column;
-  align-content: center;
-  padding: 5px;
-}
-
-#navbuttons {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: center;
   justify-content: space-between;
-}
-
-.navbutton { 
-  min-height: 1.25rem;
-  max-height: 2.2rem;
-}
-
-.navbutton > pre > a {
-  color: $link-color;
-  background-color: $bg-color;
-  //height: 100%;
-  font-size: 16px;
-  text-decoration: none;
-  padding: 5px;
-  border-style: solid;
-  border-color: rgba(0, 0, 0, 0);
-  border-size: 5px;
-  transition: color 0.2s ease;
-  transition: background-color 0.2s ease;
-  transition: border-color 0.2s ease;
-  display: flex;
-  justify-content: center;
-  position: relative;
-  &:hover {
-    color: $txt-color;
-    background-color: $button-bg-color;
-    border-color: $border-color;
-    z-index: 2;
-  }
-}
-
-#navbar-links {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
-  border-style: solid;
-  border-width: 2px;
-  border-color: $border-color;
-}
-
-#navbar-links > img {
-  width: auto;
-  height: auto;
-}
-
-#navbar-image-box {
-  width: auto;
-  height: auto;
-  padding: 5px;
-  display:flex;
-  flex-wrap: wrap;
-}
-
-#navbar-image-box img {
+  grid-area: navbar;
   max-width: 100%;
 }
 
-
-//----------------------------------------
-// Footer
-
-.footer_box {  
-  font-size: 13px;
-  color: $txt-color;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: center;
+.main {
+  grid-area: main;
+  min-height: 800px;
 }
 
-.footer_box > p {
-  margin: 0px;
-  text-align: center;
+.foot {
+  grid-area: foot;
 }
 
-.footer_box > p > a {
-  color: $link-color;
-  text-decoration: none;
-  transition: color 0.2s ease;
-  &:hover {
-    color: $txt-color;
+@media only screen and (max-width: 600px) {
+  .navbar {
+    display: none;
   }
-}
 
-.footer_box > img {
-  width: 100%;
+
+  .main_container {
+    padding: 0px;
+    grid-template-areas:
+     "head"
+     "navbar"
+     "main"
+     "foot";
+    grid-template-columns: 1fr;
+    min-width: 0px;
+    gap: 0px;
+  }
+
+  .main {
+    min-width: 0px;
+  }
+
+  body {
+    padding: 0px;
+  }
 }

@@ -1,0 +1,27 @@
+@import 'colors.scss';
+
+.md-body {
+  padding: 5px 15px 5px 15px;
+}
+
+.md-body > p > img {
+  width: auto;
+}
+
+p {
+  font-size: 14px;
+}
+
+ul {
+  font-size: 14px;
+}
+
+a {
+  transition: color 0.2s ease;
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    color: $txt-color;
+  }
+}
+

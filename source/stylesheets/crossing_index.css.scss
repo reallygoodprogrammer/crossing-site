@@ -1,0 +1,48 @@
+$accent-color: #E2F3F3;
+$border-color: #97EDD4;
+$txt-color: #000000;
+$site-title-color: #000000;
+
+#index-pages-box {
+  padding: 15px 15px 5px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-around;
+}
+
+.page-box {
+  border-style: solid;
+  border-color: $border-color;
+  padding: 5px;
+  min-width: 280px;
+  max-width: 320px;
+  width: 30%;
+  color: $txt-color;
+  transition: color 0.2s ease;
+  transition: background-color 0.2s ease;
+  &:hover {
+    color: $site-title-color;
+    background-color: $accent-color;
+  }
+  margin: 0px 0px 5px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.page-box h1 {
+  margin: 5px 0px 5px 0px;
+  font-size: 20px;
+  width: 100%;
+  overflow-wrap: break-word;
+}
+
+.page-box p {
+  font-size: 12px;
+  overflow-wrap: break-word;
+}
+
+.page-box img {
+  width: 100%;
+}
