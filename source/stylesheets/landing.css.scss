@@ -16,10 +16,14 @@
 }
 
 #picture-scroll {
-  height: 70vh;
+  height: 80vh;
   border-style: solid;
   border-color: $border-color;
   overflow-y: auto;
+}
+
+#picture-scroll img {
+  width: 100%;
 }
 
 @media only screen and (max-width: 850px) {
