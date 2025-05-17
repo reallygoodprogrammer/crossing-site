@@ -8,9 +8,12 @@
             }.each do |r| 
         %>
           <div class="navbutton">
-            <pre><a href="<%= r.url %>">  /<%= r.path.gsub('index','home').gsub('.html','').gsub('crossing/', '') %>  </a></pre>
+            <pre><a href="<%= r.url %>">  /<%= r.path.gsub('index','crossing').gsub('.html','').gsub('crossing/', '') %>  </a></pre>
           </div>
         <% end %>
+          <div class="navbutton">
+            <pre><a href="/index.html">  /saplove  </a></pre>
+          </div>
       </div>
     </div>
     <br>

@@ -6,3 +6,4 @@ archives, or just fuzzing random domain names until something is found.
 I'll try and keep this list of resources used up to date:
 
 - [InternetIsBeautiful Subreddit](https://www.reddit.com/r/InternetIsBeautiful/)
+- [SerpAPI](https://serpapi.com) for search top level domains like .xyz, .club, etc

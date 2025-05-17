@@ -1,0 +1,7 @@
+beautifulsoup4==4.13.4
+bs4==0.0.2
+pillow==11.2.1
+progressbar2==4.5.0
+python-utils==3.9.1
+soupsieve==2.7
+typing_extensions==4.13.2

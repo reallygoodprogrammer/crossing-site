@@ -1,4 +1,5 @@
-## *You are at saplove crossing*
+## *you are at a crossing*
 
-All of the content on this page is found and shared without profit of
-anykind. Happy browsing!
+**I don't endorse nor support anything on this site (necessarily)!** Everything
+found is done through some automation and is more a source for finding random
+content. A lot of the content I've never seen. This is not my own curated list.

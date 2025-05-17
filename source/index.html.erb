@@ -7,11 +7,20 @@ layout: landing
   <%= stylesheet_link_tag "landing" %>
 <% end %>
 
-<div id="message-links" >
-  <div class="md-body">
-    <%= md_link "_landing.md" %>
+<div id="page">
+  <div id="message-links" >
+    <div class="md-body">
+      <%= md_link "_landing.md" %>
+    </div>
   </div>
-</div>
 
-<div id="picture-scroll">
+  <div id="picture-scroll">
+    <%
+      sitemap.resources.select {
+        |r| r.path.starts_with?("images/landing_pics/")
+        }.each do |r|
+    %>
+      <img src="<%= r.url %>"></img>
+    <% end %>
+  </div>
 </div>

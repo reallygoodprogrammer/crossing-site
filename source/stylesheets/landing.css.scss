@@ -1,8 +1,34 @@
 @import 'colors.scss';
 @import 'markdown.css';
 
+#page {
+  font-family: $main-font;
+  display: grid;
+  grid-template-areas:
+    "message-links picture-scroll"
+    "footer footer";
+  grid-template-columns: 1fr 1fr;
+  padding: 5%;
+}
+
 #message-links {
+  padding: 5%;
 }
 
 #picture-scroll {
+  height: 70vh;
+  border-style: solid;
+  border-color: $border-color;
+  overflow-y: auto;
+}
+
+@media only screen and (max-width: 850px) {
+  #page {
+    grid-template-areas:
+      "message-links"
+      "picture-scroll"
+      "footer";
+    grid-template-columns: 1fr;
+    padding: 5%;
+  }
 }

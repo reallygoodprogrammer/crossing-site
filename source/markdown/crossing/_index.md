@@ -1,13 +1,13 @@
+About:
 
-current work in progress...
-I'm still working on scraping and setting up this website :)
+Everything found on this site is either found through randomizing urls, other
+people's curated lists, and maybe a few things I personally add. A lot of the
+links on here I have never heard about or even seen. This is more just an
+experiment for finding things on the internet, hopefully helping others find 
+something interesting along the way.
 
 ---
 
-This is a site I'm making to share things I find online. I am always open to 
-suggestions for things to add (bc suprisingly, I don't know about everything 
-that's out there). If you have a suggestion or just want to tell me something
-cool, [email me here](mailto:spiritsvacancy@gmail.com)!
-
-You can check out on my [github here](https://github.com/reallygoodprogrammer)
-if that stuff interests you.
+**If you find something problematic linked, please let me know:** you can 
+[email me here](mailto:spiritsvacancy@gmail.com). I'll try to my best to make 
+sure nothing bad gets added on here in the first place.
