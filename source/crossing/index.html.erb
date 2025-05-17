@@ -23,9 +23,9 @@ title: crossing
 </div>
 
 <div id="index-pages-box">
-  <% samples = data.crossing.pages.sample(20) %>
+  <% samples = data.crossing.pages.sample(30) %>
   <% samples.each do |p| %>
-    <a class="page-box" href="<%= p.href %>">
+    <a class="page-box" href="<%= p.href %>", target="_blank">
       <h1><%= p.title %></h1>
       <p><% p.tags.each do |tag| %><%= tag %>, <% end %></p>
       <% if p.screenshot_url != "" %>
