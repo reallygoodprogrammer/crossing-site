@@ -9,7 +9,6 @@ $site-title-color: #000000;
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-around;
-  overflow-wrap: break-word;
 }
 
 .page-box {
@@ -36,10 +35,12 @@ $site-title-color: #000000;
   margin: 5px 0px 5px 0px;
   font-size: 20px;
   width: 100%;
+  overflow-wrap: break-word;
 }
 
 .page-box p {
   font-size: 12px;
+  overflow-wrap: break-word;
 }
 
 .page-box img {
