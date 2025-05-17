@@ -1,3 +1,5 @@
+# Parse screenshawty output directory for site
+
 import getopt, sys, json, os
 import progressbar
 from PIL import Image
@@ -11,7 +13,7 @@ def help():
 
 
 # look for dump cloudflare / bad dns / 404 pages
-bad_words = [
+bad_words_in_response = [
         ["invalid ssl certificate", "visit cloudflare"],
         ["buy this domain", "godaddy"]
         ]
@@ -22,7 +24,7 @@ bad_file_characters = ["?", "#"]
 def bad_response_data(filename : str) -> bool:
     with open(filename, "r") as f:
         file_data = f.read().lower().replace("\n", " ")
-        for bad_set in bad_words:
+        for bad_set in bad_words_in_response:
             for i, b in enumerate(bad_set):
                 if b not in file_data:
                     break
@@ -111,8 +113,6 @@ def main():
 
     with open(outdir+"/pages.json", "w") as f:
         json.dump(pages, f, indent=4)
-
-        
     
 
 if __name__ == "__main__":
