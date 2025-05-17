@@ -9,6 +9,7 @@ $site-title-color: #000000;
   flex-wrap: wrap;
   align-content: center;
   justify-content: space-around;
+  overflow-wrap: break-word;
 }
 
 .page-box {
@@ -26,6 +27,9 @@ $site-title-color: #000000;
     background-color: $accent-color;
   }
   margin: 0px 0px 5px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .page-box h1 {
