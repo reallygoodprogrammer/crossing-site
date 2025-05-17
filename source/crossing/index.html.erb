@@ -25,11 +25,11 @@ title: crossing
 <div id="index-pages-box">
   <% samples = data.crossing.pages.sample(30) %>
   <% samples.each do |p| %>
-    <a class="page-box" href="<%= p.href %>", target="_blank">
+    <a class="page-box" href="<%= p.href %>" target="_blank" title="<%= p.title %>">
       <h1><%= p.title %></h1>
       <p><% p.tags.each do |tag| %><%= tag %>, <% end %></p>
       <% if p.screenshot_url != "" %>
-        <img src="/images/crossing/pages/<%= p.screenshot_url %>"></img>
+        <img src="/images/crossing/pages/<%= p.screenshot_url %>" onerror="this.onerror=null; this.src='/images/crossing/no_matching_page.png'"></img>
       <% else %>
         <img src="/images/crossing/no_matching_page.png"></img>
       <% end %>
