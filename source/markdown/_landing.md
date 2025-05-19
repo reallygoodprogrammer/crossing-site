@@ -1,4 +1,4 @@
-this is a landing page for different things I've made or make:
+this is a landing page. You've landed!
 
 ### site directory:
 

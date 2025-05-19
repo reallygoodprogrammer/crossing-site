@@ -3,6 +3,6 @@
 .DS_Store
 .sass-cache
 .gitignore
-**/.venv
+**/**/.venv
 build/
 source/images/

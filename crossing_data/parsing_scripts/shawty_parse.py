@@ -15,7 +15,22 @@ def help():
 # look for dump cloudflare / bad dns / 404 pages
 bad_words_in_response = [
         ["invalid ssl certificate", "visit cloudflare"],
-        ["buy this domain", "godaddy"]
+        ["buy this domain", "godaddy"],
+        ["GoDaddy.com.", "Get This Domain"],
+        [
+            "recently been registered with Namecheap", 
+            "trade mark is not controlled by"
+            ],
+        ["BUY THIS DOMAIN."],
+        ["503 service temporarily unavailable"],
+        ["502 bad gateway"],
+        ["403 forbidden"],
+        ["401 unauthorized"],
+        [
+            "the domain", 
+            "may be for sale. Click here to inquire about this domain."
+            ],
+        ["This link is not valid."],
         ]
 
 # characters that break img filenames
@@ -25,10 +40,11 @@ def bad_response_data(filename : str) -> bool:
     with open(filename, "r") as f:
         file_data = f.read().lower().replace("\n", " ")
         for bad_set in bad_words_in_response:
-            for i, b in enumerate(bad_set):
+            lower_bad_set = [b.lower() for b in bad_set]
+            for i, b in enumerate(lower_bad_set):
                 if b not in file_data:
                     break
-                if i == len(bad_set) - 1:
+                if i == len(lower_bad_set) - 1:
                     return True
     return False
 
