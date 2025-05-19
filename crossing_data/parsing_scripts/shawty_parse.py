@@ -31,6 +31,10 @@ bad_words_in_response = [
             "may be for sale. Click here to inquire about this domain."
             ],
         ["This link is not valid."],
+        ["This domain is for sale"],
+        ["This website is coming soon! Build your website for free on"],
+        ["This Domain is NOT Suspended Anymore"],
+        ["西柚加速器", "海量视频 一键加速 畅享精彩内容", "Azure、节点极速体验精选", "高达1000mbps带宽服务器"],
         ]
 
 # characters that break img filenames
