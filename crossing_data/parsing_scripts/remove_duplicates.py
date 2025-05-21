@@ -19,4 +19,4 @@ def remove_duplicates(parsed: str):
         json.dump(uniq_pages, f)
 
 if __name__ == "__main__":
-    remove_duplicates(sys.argv[1]+"/pages.json")
+    remove_duplicates(sys.argv[1])

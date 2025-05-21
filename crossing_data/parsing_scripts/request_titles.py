@@ -5,9 +5,9 @@ from bs4 import BeautifulSoup
 
 # pages -> file path for 'pages.json' file
 def request_titles(pages : str):
-    pages = []
+    pages_list = []
     with open(pages, "r") as f:
-        pages = json.load(f)
+        pages_list = json.load(f)
 
     bad_words = [
             "cloudflare",
@@ -19,11 +19,11 @@ def request_titles(pages : str):
 
     def abort(title: str):
         for bad in bad_words:
-            if bad in title.lower():
+            if bad in [None, ""] or bad in title.lower():
                 return True
         return False
 
-    for page in pages:
+    for page in pages_list:
         title = page["title"]
         if abort(title):
             continue
@@ -36,7 +36,7 @@ def request_titles(pages : str):
             page["title"] = soup.title.string
 
     with open(pages, "w") as f:
-        json.dump(pages, f)
+        json.dump(pages_list, f)
 
 if __name__ == "__main__":
     request_titles(sys.argv[1]+"/pages.json")
