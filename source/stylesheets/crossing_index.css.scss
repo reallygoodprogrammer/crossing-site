@@ -1,7 +1,4 @@
-$accent-color: #E2F3F3;
-$border-color: #97EDD4;
-$txt-color: #000000;
-$site-title-color: #000000;
+@import 'colors.scss';
 
 #index-pages-box {
   padding: 15px 15px 5px 15px;
@@ -22,7 +19,7 @@ $site-title-color: #000000;
   transition: color 0.2s ease;
   transition: background-color 0.2s ease;
   &:hover {
-    color: $site-title-color;
+    color: $txt-color;
     background-color: $accent-color;
   }
   margin: 0px 0px 5px 0px;

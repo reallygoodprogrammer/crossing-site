@@ -1,18 +1,19 @@
-# Parse screenshawty output directory for site
+# Parse screenshawty output directory for site, get titles
 
 import getopt, sys, json, os
 import progressbar
 from PIL import Image
+import requests
 from datetime import datetime
-
+from bs4 import BeautifulSoup
 
 def help():
+    print("parse screenshawty output directory into middleman crossing data")
     print(f"usage: python3 {sys.argv[0]} [options] <screenshawty-output-dir>")
     print(f"\t-h/--help\t\tdisplay help message")
     print(f"\t-i/--output\t\tset output directory")
 
-
-# look for dump cloudflare / bad dns / 404 pages
+# look for cloudflare / bad dns / 404 pages words
 bad_words_in_response = [
         ["invalid ssl certificate", "visit cloudflare"],
         ["buy this domain", "godaddy"],
@@ -35,11 +36,23 @@ bad_words_in_response = [
         ["This website is coming soon! Build your website for free on"],
         ["This Domain is NOT Suspended Anymore"],
         ["西柚加速器", "海量视频 一键加速 畅享精彩内容", "Azure、节点极速体验精选", "高达1000mbps带宽服务器"],
+        ["this site is private"],
+        ["Anycast"],
+        ]
+
+# page domains that I don't want on my site
+bad_urls = [
+        "wixsite.com",
+        "linkedin.com",
+        "weebly.com",
+        "instagram.com",
+        "youtube.com",
         ]
 
 # characters that break img filenames
 bad_file_characters = ["?", "#"]
 
+# flag the words within a file as bad (True) or good (False)
 def bad_response_data(filename : str) -> bool:
     with open(filename, "r") as f:
         file_data = f.read().lower().replace("\n", " ")
@@ -52,6 +65,14 @@ def bad_response_data(filename : str) -> bool:
                     return True
     return False
 
+# flag the url as bad (True) or good (False)
+def bad_url(href : str) -> bool:
+    for bad_u in bad_urls:
+        if bad_u in href:
+            return True
+    return False
+
+# get the page data from a pages.json file
 def get_data(dirname : str) -> list:
     pages = []
     try:
@@ -93,15 +114,18 @@ def main():
     except FileExistsError:
         pages = get_data(outdir)
 
-    bar = progressbar.ProgressBar(maxval=len(files), widgets=['[', progressbar.Percentage(), '] ', progressbar.Bar()])
+    # Check if the data for a word file and its url are okay,
+    # then parse data for site, adding it to pages
+    bar = progressbar.ProgressBar(maxval=len(files), widgets=['parsing data: [', progressbar.Percentage(), '] ', progressbar.Bar()])
     for i, file in enumerate(files):
         bar.update(i)
 
-        if bad_response_data(dirname+"/"+file):
+        href = file.replace("_words.txt", "").replace("_", "/")
+
+        if bad_response_data(dirname+"/"+file) or bad_url(href):
             continue
 
         title = file.split("_")[2].split(".")[-2]
-        href = file.replace("_words.txt", "").replace("_", "/")
         tags = []
         screenshot_url = ""
         ts = datetime.fromtimestamp(os.path.getmtime(dirname+"/"+file)).strftime("%Y-%m-%d %I:%M:%S%p")
@@ -128,11 +152,45 @@ def main():
             "screenshot_url": screenshot_url,
             "timestamp": ts,
             })
-
     bar.finish()
 
+    # bad title words
+    bad_words = [
+            "cloudflare",
+            "just a moment",
+            "403 forbidden",
+            "no such app",
+            "github",
+            "not found",
+            "godaddy",
+            ]
+    bad_words = [b.lower() for b in bad_words]
+
+    # flag a title as bad
+    def abort(title: str):
+        for bad in bad_words:
+            if title in [None, ""] or bad in title.lower():
+                return True
+        return False
+
+    # Requesting title's from pages
+    bar = progressbar.ProgressBar(maxval=len(files), widgets=['getting titles: [', progressbar.Percentage(), '] ', progressbar.Bar()])
+    for page in pages:
+        title = page["title"]
+        if abort(title):
+            continue
+        try:
+            r = requests.get(page["href"])
+        except:
+            continue
+        soup = BeautifulSoup(r.text, 'html.parser')
+        if soup.title is not None and not abort(soup.title.string):
+            page["title"] = soup.title.string
+
+    print(f"writing to {outdir}/pages.json... ", end="", flush=True)
     with open(outdir+"/pages.json", "w") as f:
         json.dump(pages, f, indent=4)
+    print("done!")
     
 
 if __name__ == "__main__":
