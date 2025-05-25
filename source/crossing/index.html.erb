@@ -1,43 +1,117 @@
 ---
-title: crossing
+title: art_crossing
 layout: crossing
 ---
 
 
 <% content_for :stylesheet do %>
-  <%= stylesheet_link_tag "basic" %>
   <%= stylesheet_link_tag "crossing" %>
-  <%= stylesheet_link_tag "crossing_index" %>
 <% end %>
 
-
-<% content_for :header do %>
-  <%= partial "partials/crossing/header" %>
-<% end %>
-<% content_for :navbar do %>
-  <%= partial "partials/crossing/navbar" %>
-<% end %>
-<% content_for :footer do %>
-  <%= partial "partials/crossing/footer" %>
-<% end %>
-
-<div class="md-body">
-  <%= md_link "crossing/_index.md" %>
+<div id="crossing-buttons">
+  <button id="recent-pages">recent</button>
+  <button id="random-pages">random</button>
+  <button id="home" onclick='location.href="/index.html"'>go home</button>
+  <button id="home" onclick='location.href="/crossing/license.html"'>view license</button>
 </div>
 
-<div id="index-pages-box">
-  <% samples = data.crossing.pages.sample(30) %>
-  <% samples.each do |p| %>
-    <a class="page-box" href="<%= p.href %>" target="_blank" title="<%= p.title %>">
-      <h1><%= p.title %></h1>
-      <p><% p.tags.each do |tag| %><%= tag %>, <% end %></p>
-      <% if p.screenshot_url != "" %>
-        <img src="/images/crossing/pages/<%= p.screenshot_url %>" onerror="this.onerror=null; this.src='/images/crossing/no_matching_page.png'"></img>
-      <% else %>
-        <img src="/images/crossing/no_matching_page.png"></img>
-      <% end %>
-      <p>timestamp: <%= p.timestamp %></p>
-    </a>
-  <% end %>
-</div>
+<div id="crossing-pages-box"></div>
+
+<script>
+  // Select a random set of 'k' elements
+  function getRandom(arr, k) {
+    const result = arr.slice(0, k);
+
+    for (let i = k; i < arr.length; i++) {
+      const j = Math.floor(Math.random() * (i+1));
+      if (j < k) {
+        result[j] = arr[i];
+      }
+    }
+    return result;
+  }
+
+  const maxPages = 40;
+  let allPages = [];
+
+  function inOrder() {
+    const p = allPages.slice(allPages.length - maxPages - 1, allPages.length - 1);
+    display(p);
+  }
+
+  function randomSelect() {
+    const p = getRandom(allPages, maxPages);
+    display(p);
+  }
+
+
+  // get data from page
+  fetch('/data/crossing_pages.json')
+    .then(response => response.json())
+    .then(pages => {
+      allPages = pages;
+    })
+    .catch(error => {
+      console.error('Error loading JSON data file:', error);
+    });
+
+  document.getElementById('recent-pages').addEventListener('click', inOrder);
+  document.getElementById('random-pages').addEventListener('click', randomSelect);
+
+  function display(pages) {
+    const cont = document.getElementById('crossing-pages-box');
+    cont.style.display = 'none';
+    cont.style.transition = 'display 0.5s ease-in';
+    cont.innerHTML = '';
+
+    pages.forEach(page => {
+      const box = document.createElement('div');
+      box.className = 'page-box';
+      box.style.opacity = '0';
+      box.style.transition = 'opacity 0.2s ease-in';
+
+      const title = document.createElement('a');
+      title.className = 'page-title';
+      title.textContent = page.title;
+      title.href = page.href;
+      title.target = '_blank';
+      box.appendChild(title);
+      box.appendChild(document.createElement('br'));
+
+      const source = document.createElement('a');
+      source.className = 'page-source';
+      source.textContent = "taken from: "+page.source.title;
+      source.href = page.source.href;
+      source.target = '_blank';
+      box.appendChild(source);
+      box.appendChild(document.createElement('br'));
+
+      const screenshotLink = document.createElement('a');
+      screenshotLink.className = 'screenshot-link';
+      screenshotLink.href = page.href;
+      screenshotLink.target = '_blank';
+      const screenshot = new Image();
+      screenshot.src = '/images/crossing/pages/'+page.screenshot_url;
+      screenshot.alt = page.title;
+
+      screenshot.onload = () => {
+        box.style.opacity = '1';
+      };
+      screenshotLink.appendChild(screenshot);
+      box.appendChild(screenshotLink);
+
+      const timestamp = document.createElement('p');
+      timestamp.className = 'page-timestamp';
+      timestamp.textContent = page.timestamp;
+      box.appendChild(timestamp);
+
+      box.appendChild(document.createElement('hr'));
+      cont.appendChild(box);
+    });
+    window.scrollTo(0,0);
+    cont.style.display = 'block';
+  }
+
+  document.addEventListener('DOMContentLoaded', randomSelect());
+</script>
 

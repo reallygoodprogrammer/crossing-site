@@ -16,7 +16,6 @@ with open(file1, "r") as f:
     pages = json.load(f)
 with open(file2, "r") as f:
     p = json.load(f)
-    print(type(p), type(pages))
     pages += p
 
 uniq_pages = []

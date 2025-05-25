@@ -1,6 +1,5 @@
-this is a landing page. You've landed!
+miles dustin (@reallygoodprogrammer)
 
-### site directory:
+## site directory:
 
-- [**crossing**](/crossing): semi-random website finder (for curing boredom)
-- literally nothing else...
+- [**art_crossing**](/crossing): A bunch of artists websites I collect and share in one place

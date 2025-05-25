@@ -5,28 +5,18 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= current_page.data.title || "saploves u" %></title>
+    <title><%= current_page.data.title || "milesdustin" %></title>
     <%= yield_content :stylesheet %>
-    <%= yield_content :javascript %>
   </head>
-  <body id="centered" class="page">
+  <body>
 
-    <div class="main_container">
-      <div class="head head-box">
-        <%= yield_content :header %>
-      </div>
-      <div class="navbar box">
-        <%= yield_content :navbar %>
-      </div>
-
-      <div class="main box">
-        <%= yield %>
-      </div>
-
-      <footer class="foot foot-box">
-        <%= yield_content :footer %>
-      </footer>
+    <!-- about page -->
+    <div id="about">
+      <%= md_link "_about_crossing.md" %>
     </div>
+
+    <!-- page content -->
+    <%= yield %>
 
   </body>
 </html>

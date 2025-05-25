@@ -3,36 +3,53 @@
 
 #page {
   font-family: $main-font;
-  display: grid;
-  grid-template-areas:
-    "message-links picture-scroll"
-    "footer footer";
-  grid-template-columns: 1fr 1fr;
-  padding: 5%;
 }
 
 #message-links {
   padding: 5%;
+  position: fixed;
+  z-index: 1;
 }
+
+#message-links p {
+  background: $border-color;
+  font-size: 20px;
+}
+
+#message-links h1 {
+  background: $border-color;
+}
+
+#message-links h2 {
+  background: $border-color;
+}
+
+#message-links h3 {
+  background: $border-color;
+}
+
+#message-links h4 {
+  background: $border-color;
+}
+
+#message-links h5 {
+  background: $border-color;
+}
+
+#message-links ul {
+  background: $border-color;
+  font-size: 20px;
+}
+
 
 #picture-scroll {
-  height: 80vh;
-  border-style: solid;
-  border-color: $txt-color;
-  overflow-y: auto;
+  padding: 5%;
+  position: static;
+  z-index: 0;
 }
 
-#picture-scroll img {
-  width: 100%;
-}
-
-@media only screen and (max-width: 850px) {
-  #page {
-    grid-template-areas:
-      "message-links"
-      "picture-scroll"
-      "footer";
-    grid-template-columns: 1fr;
-    padding: 5%;
-  }
+.picture-scroll-img {
+  position: relative;
+  left: 50%;
+  width: 50%;
 }

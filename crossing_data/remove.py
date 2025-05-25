@@ -2,9 +2,8 @@ import json
 import sys
 import os
 
-pages_file = "../data/crossing/pages.json"
+pages_file = "../source/data/crossing_pages.json"
 screenshots = "../source/images/crossing/pages/"
-page_screenshots = "../../saplove/images/crossing/pages/"
 remove_file = ".removed_urls.txt"
 
 if len(sys.argv) < 2:
@@ -16,14 +15,10 @@ with open(pages_file, "r") as f:
     pages = json.load(f)
 
 for p in pages:
-    if p["href"] in sys.argv[1:] or p["href"]+"/" in sys.argv[1:]:
+    if p["href"].lower() in sys.argv[1:] or p["href"].lower()+"/" in sys.argv[1:]:
         pages.remove(p)
         try:
             os.remove(screenshots + p["screenshot_url"])
-        except FileNotFoundError:
-            pass
-        try:
-            os.remove(page_screenshots + p["screenshot_url"])
         except FileNotFoundError:
             pass
         print(f"removed: {p['href']}")

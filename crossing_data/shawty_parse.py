@@ -38,6 +38,15 @@ bad_words_in_response = [
         ["西柚加速器", "海量视频 一键加速 畅享精彩内容", "Azure、节点极速体验精选", "高达1000mbps带宽服务器"],
         ["this site is private"],
         ["Anycast"],
+        ["If you are the owner of this website, please contact your hosting provider"],
+        ["This domain is for sale."],
+        ["Is this your domain?"],
+        ["This domain is pending renewal or is expired. Please contact the domain provider with questions"],
+        ["Verify you are human by completing the action below"],
+        ["Please contact us to get this domain"],
+        ["internal server error", "The server encountered an internal error or misconfiguration"],
+        ["Get this domain"],
+        ["Site en construction"],
         ]
 
 # page domains that I don't want on my site
@@ -125,8 +134,7 @@ def main():
         if bad_response_data(dirname+"/"+file) or bad_url(href):
             continue
 
-        title = file.split("_")[2].split(".")[-2]
-        tags = []
+        title = file.split("_")[2]
         screenshot_url = ""
         ts = datetime.fromtimestamp(os.path.getmtime(dirname+"/"+file)).strftime("%Y-%m-%d %I:%M:%S%p")
 
@@ -148,7 +156,10 @@ def main():
         pages.append({
             "title": title,
             "href": href,
-            "tags": tags,
+            "source": {
+                "title": "gossipweb",
+                "href": "http://gossipweb.net",
+                },
             "screenshot_url": screenshot_url,
             "timestamp": ts,
             })
@@ -174,8 +185,9 @@ def main():
         return False
 
     # Requesting title's from pages
-    bar = progressbar.ProgressBar(maxval=len(files), widgets=['getting titles: [', progressbar.Percentage(), '] ', progressbar.Bar()])
-    for page in pages:
+    bar = progressbar.ProgressBar(maxval=len(pages), widgets=['getting titles: [', progressbar.Percentage(), '] ', progressbar.Bar()])
+    for i, page in enumerate(pages):
+        bar.update(i)
         title = page["title"]
         if abort(title):
             continue
@@ -186,6 +198,7 @@ def main():
         soup = BeautifulSoup(r.text, 'html.parser')
         if soup.title is not None and not abort(soup.title.string):
             page["title"] = soup.title.string
+    bar.finish()
 
     print(f"writing to {outdir}/pages.json... ", end="", flush=True)
     with open(outdir+"/pages.json", "w") as f:

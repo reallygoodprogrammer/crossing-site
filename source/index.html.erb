@@ -20,7 +20,24 @@ layout: landing
         |r| r.path.starts_with?("images/landing_pics/")
         }.each do |r|
     %>
-      <img src="<%= r.url %>"></img>
+      <img class='picture-scroll-img' style="opacity:0;transition:opacity 0.3s ease-in;" src="<%= r.url %>"></img>
     <% end %>
   </div>
+
+  <script>
+    const ob = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    document.querySelectorAll('.picture-scroll-img').forEach(img => {
+      ob.observe(img);
+    });
+  </script>
 </div>

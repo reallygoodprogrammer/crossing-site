@@ -23,32 +23,13 @@ else
 	source .venv/bin/activate
 fi
 python3 shawty_parse.py shawty_output
-python3 combine.py parsed-for-site/pages.json ../../data/crossing/pages.json
+python3 combine.py parsed-for-site/pages.json ../source/data/crossing_pages.json
+python3 sort_pages.py combined_pages.json
 deactivate
 rm -rf parsing_scripts/.venv
 
 mv parsed-for-site/screenshots/* ../source/images/crossing/pages/
-mv combined_pages.json ../data/crossing/pages.json
+cp sorted_pages.json backups/sorted_pages_$(date | sed 's/\ /-/g').json
+mv sorted_pages.json ../source/data/crossing_pages.json
 
 rm -rf shawty_output parsed-for-site
-
-cd ../
-
-middleman build
-
-if [ $? -ne 0 ]; then
-	echo "[!] build failed"
-	exit 1
-fi
-
-rm -rf  ../reallygoodprogrammer.github.io/crossing \
-	../reallygoodprogrammer.github.io/stylesheets \
-	../reallygoodprogrammer.github.io/javascripts \
-	../reallygoodprogrammer.github.io/images
-
-mv build/* ../reallygoodprogrammer.github.io/
-
-cd ../reallygoodprogrammer.github.io/
-git add .
-git commit -m "update for site at $(date)"
-git push
