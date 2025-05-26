@@ -8,8 +8,7 @@ from datetime import datetime
 from bs4 import BeautifulSoup
 
 def help():
-    print("parse screenshawty output directory into middleman crossing data")
-    print(f"usage: python3 {sys.argv[0]} [options] <screenshawty-output-dir>")
+    print(f"usage: python3 {sys.argv[0]} [options] <screenshawty-output-dir> <source-title> <source-href>")
     print(f"\t-h/--help\t\tdisplay help message")
     print(f"\t-i/--output\t\tset output directory")
 
@@ -97,7 +96,7 @@ def main():
     outdir = "parsed-for-site"
 
     opts, args = getopt.getopt(sys.argv[1:], "i:h", ["input-dir=", "help"])
-    if len(args) == 0: 
+    if len(args) < 3: 
         print("specify a input directory")
         help()
         sys.exit(1)
@@ -115,6 +114,8 @@ def main():
 
     pages = []
     dirname = args[0][:-1] if args[0][-1] == "/" else args[0]
+    source_title = args[1]
+    source_href = args[2]
     files = [f for f in os.listdir(dirname) if f.endswith("words.txt")]
 
     try:
@@ -157,8 +158,8 @@ def main():
             "title": title,
             "href": href,
             "source": {
-                "title": "gossipweb",
-                "href": "http://gossipweb.net",
+                "title": source_title,
+                "href": source_href,
                 },
             "screenshot_url": screenshot_url,
             "timestamp": ts,

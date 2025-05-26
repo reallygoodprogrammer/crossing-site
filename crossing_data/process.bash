@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ $# -lt 1 ]; then
-	echo "usage: parse.bash <urls-file>"
+if [ $# -lt 3 ]; then
+	echo "usage: parse.bash <urls-file> <source-title> <source-url>"
 	exit 1
 fi
 
@@ -22,7 +22,7 @@ if [ ! -e ".venv" ]; then
 else
 	source .venv/bin/activate
 fi
-python3 shawty_parse.py shawty_output
+python3 shawty_parse.py shawty_output "$2" "$3"
 python3 combine.py parsed-for-site/pages.json ../source/data/crossing_pages.json
 python3 sort_pages.py combined_pages.json
 deactivate
@@ -32,4 +32,5 @@ mv parsed-for-site/screenshots/* ../source/images/crossing/pages/
 cp sorted_pages.json backups/sorted_pages_$(date | sed 's/\ /-/g').json
 mv sorted_pages.json ../source/data/crossing_pages.json
 
-rm -rf shawty_output parsed-for-site
+cp parsed-for-site/pages.json backups/source_pages_$(date | sed 's/\ /-/g').json
+#rm -rf shawty_output parsed-for-site combined_pages.json
