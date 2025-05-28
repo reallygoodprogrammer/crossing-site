@@ -37,7 +37,7 @@ bad_words_in_response = [
         ["西柚加速器", "海量视频 一键加速 畅享精彩内容", "Azure、节点极速体验精选", "高达1000mbps带宽服务器"],
         ["this site is private"],
         ["Anycast"],
-        ["If you are the owner of this website, please contact your hosting provider"],
+        ["If you are the owner of this website"],
         ["This domain is for sale."],
         ["Is this your domain?"],
         ["This domain is pending renewal or is expired. Please contact the domain provider with questions"],
@@ -46,6 +46,7 @@ bad_words_in_response = [
         ["internal server error", "The server encountered an internal error or misconfiguration"],
         ["Get this domain"],
         ["Site en construction"],
+        ["godaddy"],
         ]
 
 # page domains that I don't want on my site

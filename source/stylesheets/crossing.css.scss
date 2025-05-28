@@ -34,6 +34,9 @@
   border-style: none;
   min-width: 100px;
   text-align: right;
+  &:hover {
+    background-color: #d8d4d4;
+  }
 }
 
 #crossing-pages-box {
