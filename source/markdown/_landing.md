@@ -1,5 +1,5 @@
-miles dustin (@reallygoodprogrammer)
+miles dustin [(@reallygoodprogrammer)](http://github.com/reallygoodprogrammer)
 
-## site directory:
+## directory:
 
-- [**art_crossing**](/crossing): A bunch of artists websites I collect and share in one place
+- [**scrap_crossing**](/crossing): A bunch of website urls I collected, shared in one place, update once in a while

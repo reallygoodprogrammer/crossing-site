@@ -1,46 +1,12 @@
 @import 'colors.scss';
 @import 'markdown.css';
 
-#page {
-  font-family: $main-font;
-}
-
 #message-links {
   padding: 5%;
   position: fixed;
   z-index: 1;
+  max-width: 50%;
 }
-
-#message-links p {
-  background: $border-color;
-  font-size: 20px;
-}
-
-#message-links h1 {
-  background: $border-color;
-}
-
-#message-links h2 {
-  background: $border-color;
-}
-
-#message-links h3 {
-  background: $border-color;
-}
-
-#message-links h4 {
-  background: $border-color;
-}
-
-#message-links h5 {
-  background: $border-color;
-}
-
-#message-links ul {
-  background: $border-color;
-  font-size: 20px;
-}
-
 
 #picture-scroll {
   padding: 5%;

@@ -1,23 +1,19 @@
 @import 'colors.scss';
 @import 'markdown.css';
 
-.body {
-  font-family: $main-font;
-  background-color: $bg-color;
-}
-
 #about {
   position: fixed;
-  bottom: 30%;
-  right: 5px;
+  top: 30%;
+  right: 15px;
   z-index: -1;
   max-width: 950px;
-  width: 60%;
+  width: 50%;
 }
 
 #about p {
-  background-color: $border-color;
+  //background-color: $border-color;
   color: $txt-color;
+  font-size: 16px;
 }
 
 #crossing-buttons {
@@ -34,14 +30,10 @@
 
 #crossing-buttons button {
   font-size: 20px;
-  color: $link-color;
+  color: $txt-color;
   border-style: none;
   min-width: 100px;
   text-align: right;
-  transition: color 0.2s ease;
-  &:hover {
-    color: $txt-color;
-  }
 }
 
 #crossing-pages-box {
@@ -65,4 +57,12 @@
   border-style: solid;
   border-color: $txt-color;
   border-width: 1px;
+}
+
+a {
+  color: $txt-color;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $link-color;
+  }
 }

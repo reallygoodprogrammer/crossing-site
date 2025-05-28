@@ -33,4 +33,4 @@ cp sorted_pages.json backups/sorted_pages_$(date | sed 's/\ /-/g').json
 mv sorted_pages.json ../source/data/crossing_pages.json
 
 cp parsed-for-site/pages.json backups/source_pages_$(date | sed 's/\ /-/g').json
-#rm -rf shawty_output parsed-for-site combined_pages.json
+rm -rf shawty_output parsed-for-site combined_pages.json
